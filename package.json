@@ -1,6 +1,6 @@
 {
   "name": "@channelwill/hooks",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A React hooks library",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -43,18 +43,8 @@
     ]
   },
   "dependencies": {
-    "@shopify/polaris": "^13.6.1",
-    "@types/jest": "27.5.2",
-    "@types/js-cookie": "^2.2.6",
-    "@types/react": "18.0.0",
-    "@typescript-eslint/eslint-plugin": "5.6.0",
-    "@typescript-eslint/parser": "5.6.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "copy-to-clipboard": "^3.3.1",
-    "crypto-js": "^4.2.0",
-    "js-cookie": "^2.2.1",
-    "ts-easing": "^0.2.0",
-    "tslib": "^2.1.0"
+    "@types/crypto-js": "^4.2.2",
+    "crypto-js": "^4.2.0"
   },
   "peerDependencies": {
     "react": "*",
@@ -62,6 +52,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
+    "@shopify/polaris": "^13.6.1",
     "@storybook/addon-essentials": "^8.2.1",
     "@storybook/addon-interactions": "^8.2.1",
     "@storybook/addon-links": "^8.2.1",
@@ -70,7 +61,11 @@
     "@storybook/react": "^8.2.1",
     "@storybook/react-vite": "^8.2.1",
     "@storybook/test": "^8.2.1",
-    "@types/crypto-js": "^4.2.2",
+    "@types/jest": "27.5.2",
+    "@types/react": "18.0.0",
+    "@typescript-eslint/eslint-plugin": "5.6.0",
+    "@typescript-eslint/parser": "5.6.0",
+    "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.19",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
@@ -80,6 +75,8 @@
     "rimraf": "^6.0.1",
     "storybook": "^8.2.1",
     "tailwindcss": "^3.4.4",
+    "ts-easing": "^0.2.0",
+    "tslib": "^2.1.0",
     "typescript": "^5.5.3"
   },
   "keywords": [
