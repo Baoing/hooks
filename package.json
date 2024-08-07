@@ -1,6 +1,6 @@
 {
   "name": "@channelwill/hooks",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A React hooks library",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -88,6 +88,11 @@
     "form",
     "validation"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Baoing/hooks"
+  },
+  "homepage": "https://hooks-1be.pages.dev/",
   "author": "baoing",
   "license": "ISC"
 }
