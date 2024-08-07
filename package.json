@@ -1,6 +1,6 @@
 {
   "name": "@channelwill/hooks",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "A React hooks library",
   "main": "lib/index.js",
   "module": "esm/index.js",

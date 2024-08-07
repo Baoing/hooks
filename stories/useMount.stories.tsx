@@ -3,7 +3,7 @@ import {Meta} from "@storybook/react";
 import React from 'react';
 
 export default {
-  title: 'Hooks/useMount',
+  title: 'Base Hooks/useMount',
 } as Meta;
 
 const Template = () => {

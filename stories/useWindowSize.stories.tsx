@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import {useWindowSize} from '@channelwill/hooks';
 
 export default {
-  title: 'Hooks/useWindowSize',
+  title: 'DOM Hooks/useWindowSize',
 } as Meta;
 
 const Template: () => JSX.Element = () => {

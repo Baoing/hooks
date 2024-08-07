@@ -4,7 +4,7 @@ import {useCommunication, CommunicationProvider } from '@channelwill/hooks';
 import {Button} from "@shopify/polaris";
 
 export default {
-  title: 'Hooks/useCommunication',
+  title: 'Tool Hooks/useCommunication',
 } as Meta;
 
 

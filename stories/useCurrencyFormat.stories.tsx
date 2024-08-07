@@ -4,7 +4,7 @@ import {useCurrencyFormat, currencyEnum} from '@channelwill/hooks';
 import {Page, LegacyCard, DataTable} from '@shopify/polaris';
 
 export default {
-  title: 'Hooks/useCurrencyFormat',
+  title: 'Tool Hooks/useCurrencyFormat',
 } as Meta;
 
 

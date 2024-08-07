@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import {useInViewport} from '@channelwill/hooks';
 
 export default {
-  title: 'Hooks/useInViewport',
+  title: 'DOM Hooks/useInViewport',
 } as Meta;
 
 const Template = () => {

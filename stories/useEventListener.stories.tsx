@@ -4,7 +4,7 @@ import {Meta} from "@storybook/react";
 import {action} from "@storybook/addon-actions";
 
 export default {
-  title: 'Hooks/useEventListener',
+  title: 'DOM Hooks/useEventListener',
 } as Meta;
 
 const Template = () => {

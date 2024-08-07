@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
 import { Meta } from '@storybook/react';
+import React, {useState} from 'react';
 import {useEncryption} from '@channelwill/hooks';
 import {Button, TextField} from "@shopify/polaris";
 
 export default {
-  title: 'Hooks/useEncryption',
+  title: 'Tool Hooks/useEncryption',
 } as Meta;
 
 const Template = () => {

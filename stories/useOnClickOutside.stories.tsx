@@ -4,7 +4,7 @@ import { action  } from '@storybook/addon-actions';
 import {useOnClickOutside} from '@channelwill/hooks';
 
 export default {
-  title: 'Hooks/useOnClickOutside',
+  title: 'DOM Hooks/useOnClickOutside',
 } as Meta;
 
 const Template: () => JSX.Element = () => {

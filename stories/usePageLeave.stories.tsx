@@ -4,7 +4,7 @@ import { action  } from '@storybook/addon-actions';
 import {usePageLeave} from '@channelwill/hooks';
 
 export default {
-  title: 'Hooks/usePageLeave',
+  title: 'DOM Hooks/usePageLeave',
 } as Meta;
 
 const Template: () => JSX.Element = () => {

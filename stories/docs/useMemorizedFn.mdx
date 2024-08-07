@@ -1,61 +1,159 @@
-<Meta title="Hooks/useArrayComparison" />
-import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import Table from '../components/table';
+import {Meta, Story, Canvas} from '@storybook/addon-docs';
 
-# `useArrayComparison`
+<Meta title="Base Hooks/useMemorizedFn"/>
 
-`useArrayComparison` 用于比较两个字符串数组，并找出其中的差异。可快速识别两个数组之间的额外元素和缺失元素。
+# `useMemorizedFn`
 
-该 Hook 提供了一个 compareArrays 函数，能够返回两个数组之间的额外元素和缺失元素。
+`useMemorizedFn` 用于创建记忆化函数，缓存函数调用的结果，以提高性能。它特别适合于频繁调用同一函数的场景，避免重复计算。例如缓存搜索结果
 
-## 使用方法
-
+## 使用示例
+### 简单示例
 ```tsx
-import {useArrayComparison} from '@channelwill/hooks';
+import {useMemorizedFn} from '@channelwill/hooks';
 
 const MyComponent = () => {
-  const { compareArrays } = useArrayComparison();
+  const memorizedFibonacci = useMemorizedFn((n: number): number => {
+    if (n <= 1) return n;
+    return memorizedFibonacci(n - 1) + memorizedFibonacci(n - 2);
+  });
 
-  // 示例数组
-  const array1 = ['apple', 'banana', 'orange'];
-  const array2 = ['banana', 'kiwi', 'grape'];
+  const result = memorizedFibonacci(100);
 
-  // 调用 compareArrays 函数
-  const { extra, missing } = compareArrays(array1, array2);
-
-  return (
-    <div>
-      <h3>Extra Items in Array 2:</h3>
-      <ul>
-        {extra.map(item => <li key={item}>{item}</li>)}
-      </ul>
-      <h3>Missing Items in Array 2:</h3>
-      <ul>
-        {missing.map(item => <li key={item}>{item}</li>)}
-      </ul>
-    </div>
-  );
+  return <div>
+    <p>The 100th Fibonacci number is: {result}</p>
+    <p>Cached results: {memorizedFibonacci.cache.size}</p>
+  </div>
 };
 ```
 
-## `compareArrays` 函数参数
+### 搜索框示例示例
 
-- `arr1` (string[]): 第一个字符串数组。
-- `arr2` (string[]): 第二个字符串数组。
+```tsx
+import React, { useState, useEffect } from 'react';
+import {useMemorizedFn} from '@channelwill/hooks';
+import {TextField} from "@shopify/polaris";
 
-## 返回值
-`compareArrays` 返回一个对象，包含以下属性：
+const SearchComponent = () => {
 
-- `extra` (string[]): 在 arr2 中存在但在 arr1 中缺失的元素。
-- `missing` (string[]): 在 arr1 中存在但在 arr2 中缺失的元素。
+  // 模拟一个数据源
+  const dataSource = [
+    { id: 1, name: 'Apple' },
+    { id: 2, name: 'Banana' },
+    { id: 3, name: 'Cherry' },
+    { id: 4, name: 'Date' },
+    { id: 5, name: 'Elderberry' },
+    { id: 6, name: 'Fig' },
+    { id: 7, name: 'Grape' },
+    { id: 8, name: 'Honeydew' },
+  ];
 
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState<{id: number, name: string}[]>([]);
 
-## 函数示例
-```ts
-const { extra, missing } = compareArrays(['a', 'b', 'c'], ['b', 'd', 'e']);
-// extra: ['d', 'e']
-// missing: ['a', 'c']
+  // 使用 useMemorizedFn 来记忆化搜索函数, 也就是搜索过的值，不会再搜索了，直接使用缓存结果
+  const search = useMemorizedFn((searchQuery: string) => {
+    if (!searchQuery) return dataSource;
+
+    return dataSource.filter(item =>
+      item.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  });
+
+  // 每次 query 更新时，计算搜索结果
+  useEffect(() => {
+    const filteredResults = search(query);
+    setResults(filteredResults);
+  }, [query, search]);
+
+  return (
+    <div className={"flex gap-2 flex-col"}>
+      <Text as={"h3"} variant={"headingMd"}>模拟数据</Text>
+      <div>
+        {dataSource.map((item, index) => <div key={index}>Id:{item.id}  Name:{item.name}</div>)}
+      </div>
+
+      <Text as={"h3"} variant={"headingMd"}>动态搜索组件</Text>
+
+      <TextField
+        label={""}
+        type="text"
+        value={query}
+        onChange={setQuery}
+        placeholder="搜索..."
+        autoComplete={""}
+      />
+      <ul>
+        {results.map(item => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+      <p>缓存的结果数量: {search.cache.size}</p>
+    </div>
+  );
+};
+
+export default SearchComponent;
 ```
 
-## 注意事项
-- 该 Hook 使用了`useCallback`以优化性能，确保在依赖项未变化时不会重新创建 `compareArrays` 函数。
-- 该 Hook 适用于较简单的字符串数组，对于复杂数据结构的比较，可能需要更复杂的实现。
+### 代码说明
+1. __数据源__: 模拟了一个包含多个水果名称的数组 dataSource。
+2. __状态管理__:
+    - `query`: 存储用户输入的搜索关键词。
+    - `results`: 存储过滤后的搜索结果。
+3. __记忆化搜索函数__:
+    - 使用 `useMemorizedFn` 创建一个记忆化的搜索函数 `search`，根据用户输入的 `query` 过滤数据源。
+4. __副作用__:
+    - 使用 `useEffect` 监听 `query` 的变化，每当 `query` 更新时，调用记忆化的搜索函数并更新 `results`。
+5. __渲染__:
+    - 输入框用于接收用户输入，搜索结果以列表形式展示。
+    - 显示缓存的结果数量，便于观察记忆化的效果。
+
+## 参数
+
+<Table parameters={[
+    {
+        param: 'fn',
+        description: '要记忆化的函数。',
+        type: 'T extends (...args: any[]) => any',
+        defaultValue: '无'
+    }
+]}/>
+
+## 返回值
+
+<Table parameters={[
+    {
+        param: 'memFn',
+        description: '记忆化后的函数，可以通过调用该函数获取缓存的结果。',
+        type: 'MemorizedFunction<T>',
+        defaultValue: '无'
+    },
+    {
+        param: 'memFn.cache',
+        description: '存储缓存结果的 Map 对象，以便可以访问缓存的大小和内容。',
+        type: 'Map<string, ReturnType<T>>',
+        defaultValue: '无'
+    }
+]}/>
+
+
+## `useMemorizedFn` 和 `useMemo` 在实现方式和使用场景上的一些区别:
+
+ __实现方式__:
+ - `useMemorizedFn` 是一个自定义的 `React Hook`,它内部使用 `useRef` 来管理缓存,并实现了记忆化函数的功能。
+ - `useMemo` 是 `React` 内置的一个 `Hook`,它可以用于缓存任何类型的值,不仅仅是函数。
+
+ __缓存粒度__:
+ - `useMemorizedFn` 缓存的是函数调用的结果,即使函数参数相同,每次调用都会返回缓存的结果。
+ - `useMemo` 缓存的是表达式的结果,如果表达式中的依赖项发生变化,则会重新计算表达式。
+
+__依赖项__:
+ - `useMemorizedFn` 不需要依赖项,因为它使用 `useRef` 来管理缓存,缓存的生命周期与组件实例相同。
+ - `useMemo` 需要指定依赖项数组,当依赖项发生变化时,才会重新计算表达式。
+
+__使用场景__:
+ - `useMemorizedFn` 更适合于缓存函数调用的结果,特别是在需要频繁调用同一个函数的场景中。
+ - `useMemo` 更适合于缓存任何类型的值,例如复杂的计算结果或者昂贵的渲染操作。
+
+总的来说,`useMemorizedFn` 是一个更专注于函数缓存的自定义`Hook`,而 `useMemo` 是 `React` 内置的一个更通用的缓存 `Hook`。两者都可以用于优化性能,但根据具体的需求和场景,选择合适的 `Hook`。

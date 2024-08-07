@@ -3,7 +3,7 @@ import {Meta} from "@storybook/react";
 import React from 'react';
 
 export default {
-  title: 'Hooks/useCurrencyConverter',
+  title: 'Tool Hooks/useCurrencyConverter',
 } as Meta;
 
 const Template = () => {

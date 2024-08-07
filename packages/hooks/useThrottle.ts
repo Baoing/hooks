@@ -1,68 +1,39 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react';
 
-const useThrottle = <T>(value: T, delay: number): T => {
-  const [throttledValue, setThrottledValue] = useState<T>(value)
-  const [lastExecTime, setLastExecTime] = useState<number>(0)
+const useThrottle = <T>(value: T, ms: number = 200) => {
+  const [state, setState] = useState<T>(value);
+  const timeout = useRef<ReturnType<typeof setTimeout>>();
+  const nextValue = useRef(null) as any;
+  const hasNextValue = useRef(0) as any;
 
   useEffect(() => {
-    const now = Date.now()
-    if (now - lastExecTime >= delay) {
-      setThrottledValue(value)
-      setLastExecTime(now)
+    if (!timeout.current) {
+      setState(value);
+      const timeoutCallback = () => {
+        if (hasNextValue.current) {
+          hasNextValue.current = false;
+          setState(nextValue.current);
+          timeout.current = setTimeout(timeoutCallback, ms);
+        } else {
+          timeout.current = undefined;
+        }
+      };
+      timeout.current = setTimeout(timeoutCallback, ms);
+    } else {
+      nextValue.current = value;
+      hasNextValue.current = true;
     }
-  }, [value, delay, lastExecTime]);
+  }, [value]);
 
-  return throttledValue;
-}
+
+  // 组件卸载时清除定时器
+  useEffect(() => {
+    return () => {
+      timeout.current && clearTimeout(timeout.current);
+    };
+  }, []);
+
+  return state;
+};
 
 export default useThrottle;
-
-
-
-// ### 解释
-//
-// 1. **`useThrottle` Hook**:
-// - `useThrottle` Hook 接受一个值 `value` 和一个延迟 `delay` 作为参数，并返回一个节流后的值。
-//
-// 2. **`useState`**:
-// - 使用 `useState` 来存储节流后的值 `throttledValue`。
-//
-// 3. **`useRef`**:
-// - 使用 `useRef` 来存储上次执行的时间 `lastExecuted`。
-//
-// 4. **`useEffect`**:
-// - 使用 `useEffect` 来设置一个 `setTimeout`，在指定的延迟时间后更新节流后的值。
-//    - 每次 `value` 或 `delay` 改变时，清除之前的 `setTimeout`，并设置一个新的 `setTimeout`。
-//    - `handler` 确保在指定时间间隔内最多执行一次函数。
-//
-// 5. **返回节流后的值**:
-// - `useThrottle` Hook 返回节流后的值 `throttledValue`。
-//
-// ### 示例使用
-//
-// 以下是如何在组件中使用 `useThrottle` Hook 的示例：
-//
-// ```tsx
-// import React, { useState } from 'react';
-// import useThrottle from './useThrottle';
-//
-// const ThrottledInput = () => {
-//   const [inputValue, setInputValue] = useState('');
-//   const throttledValue = useThrottle(inputValue, 1000);
-//
-//   return (
-//     <div>
-//       <input
-//         type="text"
-//         value={inputValue}
-//         onChange={(e) => setInputValue(e.target.value)}
-//         placeholder="Type something..."
-//       />
-//       <p>Throttled Value: {throttledValue}</p>
-//     </div>
-//   );
-// };
-//
-// export default ThrottledInput;
-// ```
-

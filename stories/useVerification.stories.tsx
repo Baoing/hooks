@@ -4,7 +4,7 @@ import {useVerification} from '@channelwill/hooks';
 import {Text, TextField, Button} from "@shopify/polaris"
 
 export default {
-  title: 'Hooks/useVerification',
+  title: 'Tool Hooks/useVerification',
 } as Meta;
 
 

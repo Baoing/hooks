@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {useExportCSV, useMount} from '@channelwill/hooks';
 
 export default {
-  title: 'Hooks/useExportCSV',
+  title: 'Tool Hooks/useExportCSV',
 } as Meta;
 
 const data = [

@@ -3,7 +3,7 @@ import {Meta} from "@storybook/react";
 import React from 'react';
 
 export default {
-  title: 'Hooks/useIsMobile',
+  title: 'DOM Hooks/useIsMobile',
 } as Meta;
 
 const Template = () => {

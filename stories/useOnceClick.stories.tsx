@@ -5,7 +5,7 @@ import {useOnceClick} from '@channelwill/hooks';
 import {Button} from "@shopify/polaris";
 
 export default {
-  title: 'Hooks/useOnceClick',
+  title: 'DOM Hooks/useOnceClick',
 } as Meta;
 
 const Template: () => JSX.Element = () => {

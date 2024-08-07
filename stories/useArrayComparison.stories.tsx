@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import {useArrayComparison } from '@channelwill/hooks';
 
 export default {
-  title: 'Hooks/useArrayComparison',
+  title: 'Tool Hooks/useArrayComparison',
 } as Meta;
 
 const Template: () => JSX.Element = () => {

@@ -4,7 +4,7 @@ import {useToggle} from '@channelwill/hooks';
 import {Button} from '@shopify/polaris';
 
 export default {
-  title: 'Hooks/useToggle',
+  title: 'Base Hooks/useToggle',
 } as Meta;
 
 const Template = () => {

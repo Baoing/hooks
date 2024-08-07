@@ -4,11 +4,11 @@ import {useError} from '@channelwill/hooks';
 import {Button, Text} from "@shopify/polaris"
 
 export default {
-  title: 'Hooks/useError',
+  title: 'Tool Hooks/useError',
 } as Meta;
 
 class ErrorBoundary extends React.Component<{}, { hasError: boolean }> {
-  constructor(props) {
+  constructor(props: {} | Readonly<{}>) {
     super(props);
     this.state = { hasError: false };
   }
@@ -30,7 +30,7 @@ class ErrorBoundary extends React.Component<{}, { hasError: boolean }> {
         </div>
       );
     }
-
+    // @ts-ignore
     return this.props.children;
   }
 }

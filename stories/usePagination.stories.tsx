@@ -4,7 +4,7 @@ import {usePagination} from '@channelwill/hooks';
 import {TextField, Button} from "@shopify/polaris";
 
 export default {
-  title: 'Hooks/usePagination',
+  title: 'Tool Hooks/usePagination',
 } as Meta;
 
 const Template: () => JSX.Element = () => {

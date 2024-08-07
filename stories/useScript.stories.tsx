@@ -3,7 +3,7 @@ import {Meta} from "@storybook/react";
 import React from 'react';
 
 export default {
-  title: 'Hooks/useScript',
+  title: 'Tool Hooks/useScript',
 } as Meta;
 
 const Template = () => {
