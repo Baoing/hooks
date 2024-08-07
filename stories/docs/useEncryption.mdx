@@ -10,16 +10,20 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs';
 
 ## 使用示例
 ```tsx
-import {useEncryption} from '@channelwill/hooks';
+function App() {
+  const secretKey = 'your-secret-key'; // 定义密钥
+  const { encrypt, decrypt, encryptedText, decryptedText } = useEncryption(secretKey);
 
-const secretKey = 'your-secret-key'; // 定义密钥
-const { encrypt, decrypt } = useEncryption(secretKey);
+  return (
+    <>
+      <button onClick={() => encrypt("Hello word")}>加密</button>
+      <button onClick={() => decrypt(encryptedText || "")}>解密</button>
 
-// 加密文本
-const cipherText = encrypt('Hello, World!');
-
-// 解密文本
-const originalText = decrypt(cipherText);
+      <div>加密后的内容: {encryptedText}</div>
+      <div>解密后的内容: {decryptedText}</div>
+    </>
+  )
+}
 ```
 
 

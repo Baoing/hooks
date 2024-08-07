@@ -1,6 +1,6 @@
 {
   "name": "@channelwill/hooks",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A React hooks library",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -44,7 +44,8 @@
   },
   "dependencies": {
     "@types/crypto-js": "^4.2.2",
-    "crypto-js": "^4.2.0"
+    "crypto-js": "^4.2.0",
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "react": "*",
@@ -76,7 +77,6 @@
     "storybook": "^8.2.1",
     "tailwindcss": "^3.4.4",
     "ts-easing": "^0.2.0",
-    "tslib": "^2.1.0",
     "typescript": "^5.5.3"
   },
   "keywords": [
