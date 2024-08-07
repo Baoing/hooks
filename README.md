@@ -82,6 +82,21 @@ const ExampleComponent = () => {
 
 ```
 
+## 🤝 Participate in co-construction.
+
+```bash
+$ git clone git@github.com:Baoing/hooks.git
+
+$ cd hooks
+
+$ npm install
+
+$ npm run start
+```
+
+Open browser access [http://localhost:6006/](http://localhost:6006/)
+
+
 ## License
 
 MIT License
