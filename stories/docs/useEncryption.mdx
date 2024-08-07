@@ -1,0 +1,58 @@
+
+import Table from '../components/table';
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Hooks/useEncryption" />
+
+# `useEncryption`
+
+`useEncryption` 提供`AES`加密和解密功能。它使用 `crypto-js` 库进行加密操作，允许用户安全地处理敏感文本。
+
+## 使用示例
+```tsx
+import {useEncryption} from '@channelwill/hooks';
+
+const secretKey = 'your-secret-key'; // 定义密钥
+const { encrypt, decrypt } = useEncryption(secretKey);
+
+// 加密文本
+const cipherText = encrypt('Hello, World!');
+
+// 解密文本
+const originalText = decrypt(cipherText);
+```
+
+
+## 参数
+- secretKey
+类型: `string`
+
+描述: 用于加密和解密操作的密钥。是对称加密中使用的关键参数，确保加密数据的安全性。必须是一个有效的字符串，且长度应适合加密算法的要求（例如，AES 通常需要一个特定长度的密钥，如 16、24 或 32 字节）。
+
+## 返回值
+
+<Table parameters={[
+    {
+        param: 'encryptedText',
+        description: '存储当前加密的文本。当调用 encrypt 方法后，encryptedText 会更新为加密后的字符串。',
+        type: 'string | null',
+        defaultValue: "null"
+    },
+    {
+        param: 'decryptedText',
+        description: '存储当前解密的文本。当调用 decrypt 方法后，decryptedText 会更新为解密后的原始字符串。',
+        type: 'string | null',
+        defaultValue: "null"
+    },
+    {
+        param: 'encrypt',
+        description: '加密指定的文本并返回加密后的字符串。',
+        type: '(text: string) => string',
+    },
+    {
+        param: 'encrypt',
+        description: '解密指定的密文并返回原始文本字符串。',
+        type: '(cipherText: string) => string',
+    },
+]} />
+

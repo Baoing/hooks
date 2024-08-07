@@ -1,0 +1,44 @@
+<Meta title="Hooks/useToggle" />
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+# `useToggle`
+
+`useToggle` 用于简便管理Boolean状态，并提供一个切换该状态的函数。
+
+## 适用场景
+- 各种需要布尔值开关状态的场景，比如开关按钮、显示/隐藏组件、Loading等等。
+
+## 使用方法
+
+```tsx
+import {useToggle} from '@channelwill/hooks';
+import {Button, Form, TextField} from '@shopify/polaris';
+
+const MyComponent = () => {
+  const [isOpen, toggleOpen] = useToggle(false);
+
+  return (
+    <div>
+      <p>当前状态: {isOpen ? "开" : "关"}</p>
+      <div className={"flex gap-2 mt-2"}>
+        <Button onClick={() => toggleOpen()}>切换状态</Button>
+        <Button onClick={() => toggleOpen(true)}>打开</Button>
+        <Button onClick={() => toggleOpen(false)}>关闭</Button>
+      </div>
+    </div>
+  );
+};
+```
+
+## 参数
+- `initialValue` (boolean)：初始的布尔状态值。
+
+## 返回值
+`useToggle` Hook 返回一个数组，该数组包含两个元素：
+
+- 当前状态 (boolean)：
+
+- 当前的布尔状态值。
+切换状态的函数 (function)：
+
+一个用于切换状态的函数。该函数可以接受一个可选参数来设置下一个状态，如果不传参数则会切换当前状态。

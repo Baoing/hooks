@@ -1,0 +1,41 @@
+<Meta title="Hooks/useWindowSize" />
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+# `useWindowSize`
+
+`useWindowSize` 用于监听窗口尺寸的变化并返回当前窗口的宽度和高度。
+
+## 适用场景
+- 根据视口尺寸动态调整组件的显示效果。
+- 全屏模式下，元素需要根据窗口的变化进行重新布局。
+- 不便于使用CSS媒体查询场景下动态内容排版。
+
+## 使用方法
+
+```tsx
+import {useWindowSize} from '@channelwill/hooks';
+
+const MyComponent = () => {
+  const windowSize = useWindowSize();
+
+  return (
+    <div>
+      <p>窗口宽度: {windowSize.width}</p>
+      <p>窗口高度: {windowSize.height}</p>
+    </div>
+  );
+};
+```
+
+## 参数
+无
+
+## 返回值
+
+useWindowSize Hook 返回一个对象，该对象包含当前窗口的宽度和高度：
+```
+{
+    width: number,  // 当前窗口的宽度
+    height: number  // 当前窗口的高度
+}
+```

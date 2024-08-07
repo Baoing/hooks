@@ -1,0 +1,93 @@
+{
+  "name": "@channelwill/hooks",
+  "version": "0.0.1",
+  "description": "A React hooks library",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "lib/",
+    "esm/"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "start": "yarn storybook",
+    "prebuild": "rimraf lib esm",
+    "build:cjs": "tsc",
+    "build:es": "tsc -m esNext --outDir esm",
+    "build": "yarn build:cjs && yarn build:es",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint \"{packages,tests,stories}/**/*.{ts,tsx}\"",
+    "lint:fix": "yarn lint --fix",
+    "clean": "rimraf lib storybook-static esm",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "build-storybook",
+    "storybook:upload": "gh-pages -d storybook-static --git \"$(which git)\"",
+    "storybook:clean": "rimraf storybook-static",
+    "build-storybook": "storybook build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn lint && yarn clean && yarn build && yarn test"
+    }
+  },
+  "lint-staged": {
+    "packages/**/**/*.{ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@shopify/polaris": "^13.6.1",
+    "@types/jest": "27.5.2",
+    "@types/js-cookie": "^2.2.6",
+    "@types/react": "18.0.0",
+    "@typescript-eslint/eslint-plugin": "5.6.0",
+    "@typescript-eslint/parser": "5.6.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "copy-to-clipboard": "^3.3.1",
+    "crypto-js": "^4.2.0",
+    "js-cookie": "^2.2.1",
+    "ts-easing": "^0.2.0",
+    "tslib": "^2.1.0"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.6.1",
+    "@storybook/addon-essentials": "^8.2.1",
+    "@storybook/addon-interactions": "^8.2.1",
+    "@storybook/addon-links": "^8.2.1",
+    "@storybook/addon-onboarding": "^8.2.1",
+    "@storybook/blocks": "^8.2.1",
+    "@storybook/react": "^8.2.1",
+    "@storybook/react-vite": "^8.2.1",
+    "@storybook/test": "^8.2.1",
+    "@types/crypto-js": "^4.2.2",
+    "autoprefixer": "^10.4.19",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
+    "postcss": "^8.4.39",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "rimraf": "^6.0.1",
+    "storybook": "^8.2.1",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.3"
+  },
+  "keywords": [
+    "react",
+    "hook",
+    "form",
+    "validation"
+  ],
+  "author": "baoing",
+  "license": "ISC"
+}

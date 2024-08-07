@@ -1,0 +1,69 @@
+import Table from '../components/table';
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Hooks/useDebounce" />
+
+# `useDebounce`
+
+`useDebounce` 用于实现防抖功能。在给定的延迟时间内，延迟更新状态，避免频繁的状态更改。适用于处理输入框、搜索框等需要减少请求次数的场景等。
+
+## 使用示例
+```tsx
+import React, { useState, useEffect } from 'react';
+import {useDebounce} from '@channelwill/hooks';
+
+const SearchComponent = () => {
+  const [inputValue, setInputValue] = useState('');
+  const debouncedValue = useDebounce(inputValue, 500); // 500ms 防抖
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
+  useEffect(() => {
+    if (debouncedValue) {
+      console.log('发送请求:', debouncedValue);
+      // 在这里调用 API
+    }
+  }, [debouncedValue]);
+
+  return (
+    <input
+      type="text"
+      value={inputValue}
+      onChange={handleChange}
+      placeholder="搜索..."
+    />
+  );
+};
+
+export default SearchComponent;
+
+```
+
+## 参数
+
+<Table parameters={[
+    {
+        param: 'value',
+        description: '需要进行防抖的值。',
+        type: 'T',
+        defaultValue: 'undefined'
+    },
+    {
+        param: 'delay',
+        description: '防抖延迟时间（以毫秒为单位）。',
+        type: 'number',
+        defaultValue: '0'
+    }
+]} />
+
+## 返回值
+
+<Table parameters={[
+    {
+        param: 'debouncedValue',
+        description: '返回经过防抖处理后的值。',
+        type: 'T',
+    }
+]} />

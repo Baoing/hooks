@@ -1,0 +1,61 @@
+<Meta title="Hooks/useArrayComparison" />
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+# `useArrayComparison`
+
+`useArrayComparison` 用于比较两个字符串数组，并找出其中的差异。可快速识别两个数组之间的额外元素和缺失元素。
+
+该 Hook 提供了一个 compareArrays 函数，能够返回两个数组之间的额外元素和缺失元素。
+
+## 使用方法
+
+```tsx
+import {useArrayComparison} from '@channelwill/hooks';
+
+const MyComponent = () => {
+  const { compareArrays } = useArrayComparison();
+
+  // 示例数组
+  const array1 = ['apple', 'banana', 'orange'];
+  const array2 = ['banana', 'kiwi', 'grape'];
+
+  // 调用 compareArrays 函数
+  const { extra, missing } = compareArrays(array1, array2);
+
+  return (
+    <div>
+      <h3>Extra Items in Array 2:</h3>
+      <ul>
+        {extra.map(item => <li key={item}>{item}</li>)}
+      </ul>
+      <h3>Missing Items in Array 2:</h3>
+      <ul>
+        {missing.map(item => <li key={item}>{item}</li>)}
+      </ul>
+    </div>
+  );
+};
+```
+
+## `compareArrays` 函数参数
+
+- `arr1` (string[]): 第一个字符串数组。
+- `arr2` (string[]): 第二个字符串数组。
+
+## 返回值
+`compareArrays` 返回一个对象，包含以下属性：
+
+- `extra` (string[]): 在 arr2 中存在但在 arr1 中缺失的元素。
+- `missing` (string[]): 在 arr1 中存在但在 arr2 中缺失的元素。
+
+
+## 函数示例
+```ts
+const { extra, missing } = compareArrays(['a', 'b', 'c'], ['b', 'd', 'e']);
+// extra: ['d', 'e']
+// missing: ['a', 'c']
+```
+
+## 注意事项
+- 该 Hook 使用了`useCallback`以优化性能，确保在依赖项未变化时不会重新创建 `compareArrays` 函数。
+- 该 Hook 适用于较简单的字符串数组，对于复杂数据结构的比较，可能需要更复杂的实现。

@@ -1,0 +1,62 @@
+import Table from '../components/table';
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Hooks/useEventListener" />
+
+# `useEventListener`
+
+`useEventListener` 用于在 React 组件中方便地添加和管理事件监听器。它能够确保在组件更新时使用最新的事件处理函数，并在组件卸载时自动清除事件监听器。
+
+
+## 功能
+- 动态绑定事件监听器。
+- 自动更新处理函数，确保使用最新的函数。
+- 在组件卸载时自动移除事件监听器，避免内存泄漏。
+
+## 参数
+<Table parameters={[
+    {
+        param: 'eventName',
+        description: '要监听的事件名称，例如 "click"、"scroll" 等。',
+        type: 'string',
+        defaultValue: '无',
+        exampleValue: '"click"'
+    },
+    {
+        param: 'handler',
+        description: '事件处理函数，接收事件对象作为参数。',
+        type: "EventHandler<E>",
+        defaultValue: '无',
+        exampleValue: '(event) => { console.log("Button clicked!", event); }'
+    },
+    {
+        param: 'element',
+        description: '可选项，事件监听器绑定的目标元素，默认为全局 window 对象。',
+        type: 'T extends EventTarget',
+        defaultValue: 'window',
+        exampleValue: 'document.getElementById("myElement")'
+    },
+]} />
+
+## 返回值
+无
+
+## 注意事项
+- 确保 eventName 是有效的事件名称。
+- 如果需要监听特定元素的事件，可以传递该元素作为 element 参数。
+- 由于 TypeScript 的类型推导，使用时可能需要注意事件类型的匹配。
+
+## 示例
+```tsx
+import {useEventListener} from '@channelwill/hooks';
+
+const MyComponent = () => {
+  const handleClick = (event) => {
+    console.log('Button clicked!', event);
+  };
+
+  useEventListener('click', handleClick);
+
+  return <button>Click Me</button>;
+};
+```

@@ -1,0 +1,125 @@
+import Table from '../components/table';
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Hooks/useForm" />
+
+# `useForm`
+
+`useForm` 用于管理表单状态和验证。
+
+## 参数
+
+<Table parameters={[
+    {
+        param: 'initialState',
+        description: '表单初始值',
+        type: 'T',
+        defaultValue: '{}',
+        exampleValue: `{ name: ""}`
+    },
+    {
+        param: 'validationSchema',
+        description: '可选项，验证规则。 每个键对应一个表单字段, 值是一个验证函数。验证函数接受一个字符串参数并返回一个字符串(错误消息)或空字符串(无错误)',
+        type: 'ValidationSchema',
+        defaultValue: '{}',
+        exampleValue: `{ name: (value) => (value.trim() === "" ? "Name is required" : "")}`
+    },
+]} />
+
+
+
+## 返回值
+`useForm` 返回一个包含以下元素的数组:
+
+1.`values`: 表单的当前值。这是一个与 `initialState` 具有相同结构的对象。
+
+2.`errors`: 表单字段的错误信息。这是一个对象,其键对应于表单字段,值为错误消息或 null(无错误)。
+
+3.`handleChange`: 一个函数,用于更新表单字段值并进行验证。它接受两个参数:字段名称和新值。
+
+4.`resetForm`: 一个函数,用于将表单重置为初始状态。
+
+5.`validateForm`: 一个函数,用于验证整个表单。它返回一个布尔值,表示表单是否有效。
+
+6.`clearErrors`: 一个函数,用于清除指定字段或全部字段的错误。它接受一个可选的字段名称参数。
+
+
+## 使用示例
+```tsx
+import {Button, Form, TextField} from '@shopify/polaris';
+import {useForm} from '@channelwill/hooks';
+
+// 定义验证函数
+const required = (value: any) => (value ? "" : 'This field is required');
+const emailFormat = (value: string) => /\S+@\S+\.\S+/.test(value) ? "" : 'Invalid email format';
+const length = (value: string) => value.length >= 8 ? "" : "The field value is at least 8 characters long"
+
+export default function (){
+  const [formValues, formErrors, handleInputChange, resetForm, validateForm, clearErrors] = useForm(
+    {
+      name: '',
+      email: '',
+      password: ''
+    },
+    {
+      name: required,
+      email: (value) => required(value) || emailFormat(value),
+      password: (value) => required(value) || length(value)
+    }
+  );
+
+  const handleChange = (key: string, value: string) => {
+    handleInputChange(key, value);
+    // 如果需要输入时清除error
+    clearErrors(key)
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validateForm()) {
+      console.log(formValues)
+      resetForm();
+    } else {
+      console.log(formErrors)
+    }
+  };
+
+  return (
+    <div className={"w-96 max-w-full"}>
+      <Form onSubmit={handleSubmit}>
+        <div className={"flex gap-2 flex-col"}>
+          <TextField
+            label="Name"
+            value={formValues.name}
+            onChange={(value) => handleChange("name", value)}
+            autoComplete={""}
+            error={formErrors.name || ""}
+          />
+
+          <TextField
+            label="Email"
+            value={formValues.email}
+            onChange={(value) => handleChange("email", value)}
+            autoComplete={""}
+            error={formErrors.email || ""}
+          />
+
+          <TextField
+            label="Password"
+            type={"password"}
+            value={formValues.password}
+            onChange={(value) => handleChange("password", value)}
+            autoComplete={""}
+            error={formErrors.password || ""}
+          />
+
+          <div className={"flex mt-2 gap-2"}>
+            <Button size={"large"} onClick={resetForm}>Reset</Button>
+            <Button size={"large"} submit variant={"primary"}>Submit</Button>
+          </div>
+        </div>
+      </Form>
+    </div>
+  );
+};
+```

@@ -1,0 +1,36 @@
+<Meta title="Hooks/useMount" />
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+# `useMount`
+
+`useMount` 用于在组件挂载时执行一些特定的操作。
+
+## 适用场景
+- 在组件挂载时初始化一些状态或数据。
+- 在组件挂载时设置事件监听器或订阅。
+- 在组件挂载时发起一些异步操作,如 API 请求。
+
+## 使用方法
+
+```tsx
+import {useMount} from '@channelwill/hooks';
+
+const ExampleComponent = () => {
+  useMount(() => {
+    // 在组件挂载时执行的操作
+    console.log('组件已挂载');
+
+    // 在组件卸载时清理资源
+    return () => {
+      console.log('组件已卸载');
+    };
+  });
+
+  return <div>我的组件</div>;
+};
+```
+
+## 参数
+`useMount` 接受一个函数作为参数:
+
+- `fn: () => void`: 在组件挂载时要执行的操作。

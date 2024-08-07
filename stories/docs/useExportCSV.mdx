@@ -1,0 +1,99 @@
+import Table from '../components/table';
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Hooks/useExportCSV" />
+
+# `useExportCSV`
+
+`useExportCSV` 用于将数据转换为 CSV 格式，并生成可下载的 URI。支持多种数据格式，包括对象数组、数组的数组和字符串数据。
+
+## 功能
+__数据类型支持：__
+
+- 对象数组（Array of Objects）
+- 数组的数组（Array of Arrays）
+- 字符串数据（String）
+
+
+__CSV 格式化：__
+
+- 支持自定义分隔符和封闭字符。
+- 自动处理空或未定义的元素。
+
+## 参数
+
+<Table parameters={[
+    {
+        param: 'data',
+        description: '要转换为 CSV 的数据，可以是对象数组、数组的数组或字符串。',
+        type: 'Array / String',
+        defaultValue: '无',
+        exampleValue: '[{ name: "Alice", age: 30 }, { name: "Bob", age: 25 }]'
+    },
+    {
+        param: 'headers',
+        description: '可选项，自定义 CSV 表头，可以是对象数组或字符串数组。',
+        type: 'Array',
+        defaultValue: '无',
+        exampleValue: '[{ key: "name" }, { key: "age" }]'
+    },
+    {
+        param: 'separator',
+        description: '可选项，用于分隔 CSV 字段的字符。',
+        type: 'String',
+        defaultValue: ',',
+        exampleValue: '|'
+    },
+    {
+        param: 'enclosingCharacter',
+        description: '可选项，用于包围字段的字符。',
+        type: 'String',
+        defaultValue: '"',
+        exampleValue: "'"
+    },
+    {
+        param: 'uFEFF',
+        description: '可选项，指示是否在 CSV 开头添加 BOM（Byte Order Mark）。',
+        type: 'Boolean',
+        defaultValue: 'false',
+        exampleValue: 'true'
+    }
+]} />
+
+## 错误处理
+如果传入的数据类型不符合要求，toCSV 函数会抛出一个 TypeError，提示数据应为字符串、数组的数组或对象数组。
+
+## 示例
+```js
+import {useMount, useExportCSV} from '@channelwill/hooks';
+import {useState} from 'react';
+
+const data = [
+  { name: "Alice", age: 30 },
+  { name: "Bob", age: 25 }
+];
+
+const headers = [{ key: "name" }, { key: "age" }];
+
+const ExampleComponent = () => {
+  const { buildURI } = useExportCSV();
+  const [csvURL, setURL] = useState("")
+
+  useMount(() => {
+    setURL(buildURI({
+      data,
+      headers,
+      separator: ",",
+      enclosingCharacter: "\"",
+      uFEFF: true // 是否添加 BOM
+    }))
+  });
+
+  return (
+    <div>
+      <a download={`测试示例.csv`} href={csvURL}>下载csv</a>
+    </div>
+  );
+};
+
+```

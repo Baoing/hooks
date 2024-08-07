@@ -1,0 +1,66 @@
+<Meta title="Hooks/useInViewport" />
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+# `useInViewport`
+
+`useInViewport` 用于检测一个元素是否在视口（viewport）内。 它使用 IntersectionObserver API 来监听元素的可见性变化。
+
+## 适用场景
+- 延迟加载，在元素进入视口时加载内容或图片。
+- 动画触发，当元素进入视口时触发动画效果。
+- 广告曝光，监控广告元素是否被用户看到。
+- 分析和跟踪，跟踪用户浏览行为，分析哪些元素被用户看到。
+
+
+## 注意事项
+- 确保在元素被观察之前将其传递给 setNode。
+- 在卸载组件时，IntersectionObserver 将自动停止观察该元素。
+
+## 使用方法
+
+```tsx
+import {useInViewport} from '@channelwill/hooks';
+import {Button, Form, TextField} from '@shopify/polaris';
+
+const MyComponent = () => {
+  const [setNode, inViewport] = useInViewport({
+    rootMargin: '0px', // 可选：设置视口边界的偏移量
+    threshold: 0.1    // 可选：当元素与视口相交的比例达到 10% 时触发
+  });
+
+  return (
+    <div style={{ height: "200vh", padding: "20px" }}> {/* 增加页面高度以启用滚动 */}
+      <div
+        ref={setNode}
+        style={{
+          height: "100px",
+          margin: "50px 0",
+          backgroundColor: inViewport ? "lightgreen" : "lightcoral", // 根据是否在视口中改变背景色
+          transition: "background-color 0.3s"
+        }}
+      >
+        观察这个元素是否在视口内
+      </div>
+      <p>元素 {inViewport ? <strong style={{color: "green"}}>在</strong> : <strong style={{color: "red"}}>不在</strong>} 视口内</p>
+      <p style={{color: "#878787"}}>滚动页面来测试元素的可见性。</p>
+    </div>
+  );
+};
+```
+
+## 参数
+- `options` (`IntersectionObserverInit`，可选)：
+    IntersectionObserver 的配置选项。可以包含以下属性：
+    - root：用作视口的元素，默认为浏览器视口。
+    - rootMargin：视口边界的偏移量，类似于 CSS 的 margin。
+    - threshold：一个或多个阈值，表示元素与视口相交的比例。
+
+## 返回值
+`useToggle` Hook 返回一个数组，该数组包含两个元素：
+
+- 当前状态 (boolean)：
+
+- 当前的布尔状态值。
+切换状态的函数 (function)：
+
+一个用于切换状态的函数。该函数可以接受一个可选参数来设置下一个状态，如果不传参数则会切换当前状态。

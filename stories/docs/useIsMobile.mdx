@@ -1,0 +1,37 @@
+<Meta title="Hooks/useIsMobile" />
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+# `useIsMobile`
+
+`useIsMobile` 用于检测当前设备是否为移动设备, 此hook结合了窗口尺寸（useWindowSize）和用户代理信息来判断设备类型。
+
+## 适用场景
+- 检测是否移动设备，进行条件判断
+
+## 使用方法
+
+```tsx
+import {useIsMobile} from '@channelwill/hooks';
+
+const MyComponent = () => {
+  const isMobile = useIsMobile();
+  const isMobileWithWindowWide = useIsMobile({isWindowWide: true});
+
+  return <div>
+    <p>当前设备: {isMobile ? "移动设备" : "非移动设备"}</p>
+    <p>当前设备(含尺寸判断): {isMobileWithWindowWide ? "移动设备" : "非移动设备"}</p>
+  </div>
+};
+```
+
+## 参数
+- props (可选): 一个对象，包含以下属性：
+  - isWindowWide (布尔值，默认值为 undefined):
+    如果为 true，则在判断窗口宽度时，会将宽度小于 767px 且高度小于 750px 的情况视为移动设备。
+    如果为 false 或未提供，则只考虑用户代理信息。
+
+## 返回值
+useIsMobile Hook 返回一个布尔值，表示当前设备是否为移动设备：
+
+- isMobile (boolean)：
+如果当前设备为移动设备，则返回 true；否则返回 false。

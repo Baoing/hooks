@@ -1,0 +1,69 @@
+
+<Meta title="Hooks/useError" />
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+# `useError`
+
+`useError` 用于管理和抛出组件中的错误。
+
+## 使用方法
+确保错误能够被应用程序的错误处理机制捕获和处理,而不是被组件内部吞噬
+
+```tsx
+import {useError} from '@channelwill/hooks';
+import { useEffect } from 'react';
+
+const ExampleComponent = () => {
+  const throwError = useError();
+
+  useEffect(() => {
+    try {
+      // 可能会抛出错误的操作
+      throw new Error('这是一个测试错误');
+    } catch (error) {
+      throwError(error);
+    }
+  }, [throwError]);
+
+  return <div>我的组件</div>;
+};
+```
+## 配合错误拦截一起使用
+```tsx
+import {Button, Text} from "@shopify/polaris"
+import {useError} from '@channelwill/hooks';
+
+class ErrorBoundary extends React.Component<{}, { hasError: boolean }> {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div>
+          <Text as="h2" tone={"critical"}>
+            Something went wrong.
+          </Text>
+          <div className={"mt-2"}>
+            <Button onClick={() => this.setState({ hasError: false })}>Retry</Button>
+          </div>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
+export default () => {
+  return <ErrorBoundary>
+    <ExampleComponent />
+  </ErrorBoundary>;
+};
+```

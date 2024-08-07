@@ -1,0 +1,110 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import Table from "../components/table";
+
+<Meta title="Hooks/usePagination" />
+
+# `usePagination`
+
+`usePagination` 用于处理分页逻辑。它提供了当前页、总页数以及用于导航的函数，使得在处理大量数据时的分页变得简单和高效。
+
+
+## 使用示例
+```tsx
+import React from 'react';
+import {usePagination} from '@channelwill/hooks';
+import {Button, TextField} from "@shopify/polaris";
+
+const MyComponent = () => {
+ const {currentPage, totalPages, nextPage, prevPage, setPage} = usePagination({
+    totalItems: 100,
+    itemsPerPage: 10,
+    initialPage: 1,
+  });
+
+  return <div className={"flex gap-2 flex-col"}>
+    <h3>当前页: {currentPage}</h3>
+    <h3>总页数: {totalPages}</h3>
+    <div className={"flex gap-2"}>
+      <Button onClick={prevPage} disabled={currentPage === 1}>上一页</Button>
+      <Button onClick={nextPage} disabled={currentPage === totalPages}>下一页</Button>
+      <TextField
+        type="number"
+        value={String(currentPage)}
+        onChange={(value) => setPage(Number(value))}
+        min={1}
+        max={totalPages}
+        autoComplete={""}
+        label={""}
+      />
+    </div>
+  </div>;
+};
+
+export default MyComponent;
+```
+
+## 参数
+<Table parameters={[
+    {
+        param: 'totalItems',
+        description: '数据的总项数',
+        type: 'number',
+        defaultValue: '0',
+        exampleValue: '100'
+    },
+    {
+        param: 'itemsPerPage',
+        description: '每页显示的项数',
+        type: 'number',
+        defaultValue: '10',
+        exampleValue: '10'
+    },
+    {
+        param: 'initialPage',
+        description: '初始页码，默认为 1',
+        type: 'number',
+        defaultValue: '1',
+        exampleValue: '1'
+    }
+]} />
+
+## 返回值
+
+<Table parameters={[
+    {
+        param: 'currentPage',
+        description: '当前页码',
+        type: 'number',
+        defaultValue: '1',
+        exampleValue: '1'
+    },
+    {
+        param: 'totalPages',
+        description: '总页数',
+        type: 'number',
+        defaultValue: '0',
+        exampleValue: '10'
+    },
+    {
+        param: 'nextPage',
+        description: '函数，前往下一页',
+        type: 'function',
+        defaultValue: '() => {}',
+        exampleValue: 'nextPage()'
+    },
+    {
+        param: 'prevPage',
+        description: '函数，返回上一页',
+        type: 'function',
+        defaultValue: '() => {}',
+        exampleValue: 'prevPage()'
+    },
+    {
+        param: 'setPage',
+        description: '函数，设置指定页码',
+        type: 'function',
+        defaultValue: '(page: number) => {}',
+        exampleValue: 'setPage(2)'
+    }
+]} />
+

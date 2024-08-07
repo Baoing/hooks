@@ -1,0 +1,48 @@
+<Meta title="Hooks/useCurrencyConverter" />
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+# `useCurrencyConverter`
+
+`useCurrencyConverter` 用于获取货币汇率并提供货币转换功能。它通过异步请求获取最新的货币汇率，并提供一个转换函数来将金额从一种货币转换为另一种货币。
+
+
+## 使用方法
+
+```tsx
+import {useCurrencyConverter} from '@channelwill/hooks';
+
+
+const MyComponent = () => {
+  const { rates, convert, loading, error } = useCurrencyConverter();
+
+  if (loading) return <p>加载中...</p>;
+  if (error) return <p>错误: {error.message}</p>;
+
+  const amountInUSD = convert(100, 'EUR', 'USD');
+
+  return (
+    <div>
+      <p>汇率: {JSON.stringify(rates)}</p>
+      <p>100 EUR = {amountInUSD} USD</p>
+    </div>
+  );
+};
+```
+
+## 返回值
+
+- `rates`: 汇率数据（`Object`），包含从 API 获取的货币汇率，以货币代码为键，汇率为值。例如：`{ "USD": 1, "EUR": 0.85, ... }`
+- `convert`: `(amount: number, from: string, to: string) => number | null`，用于将金额从一种货币转换为另一种货币。
+  - __参数__:
+
+  - `amount` (`number`): 要转换的金额。
+
+  - `from` (`string`): 源货币代码。
+
+  - `to` (`string`): 目标货币简码。
+
+  - __返回值__: 转换后的金额（`number|null`），如果源货币或目标货币不存在于汇率中，则返回 `null`。
+
+- `loading`: `boolean`，表示汇率数据是否正在加载。
+
+- `error`: (`Error|null`)如果发生错误，将包含错误对象；否则为 `null`。

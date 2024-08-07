@@ -1,0 +1,64 @@
+<Meta title="Hooks/useCurrencyFormat" />
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+# `useCurrencyFormat`
+
+`useCurrencyFormat` 用于格式化货币值。它提供多种格式化选项，包括千位分隔符、去除小数、以及安装Shopify提供的不同的分隔符样式。
+
+## 使用方法
+#### 1. 引入 Hook
+```ts
+import {useCurrencyFormat} from '@channelwill/hooks';
+```
+#### 2. 初始化 Hook
+```ts
+const { formatCurrency } = useCurrencyFormat();
+```
+#### 3. 格式化货币
+使用 `formatCurrency` 函数来格式化货币值。该函数接受三个参数：
+
+ - `value` (string): 要格式化的货币值。
+ - `format` (string): 需要应用的格式。
+ - `defaultValue` (string, 可选): 如果 `value` 为假值（如 "0" 或 "0.00"），则返回的默认值。
+
+```ts
+const formattedValue = formatCurrency("1234567.89", "{{amount}}");
+```
+## 格式选项
+```ts
+// 被导出的枚举类型
+export enum currencyEnum {
+  Amount = "{{amount}}",
+  AmountNoDecimals = "{{amount_no_decimals}}",
+  AmountWithCommaSeparator = "{{amount_with_comma_separator}}",
+  AmountNoDecimalsWithCommaSeparator = "{{amount_no_decimals_with_comma_separator}}",
+  AmountWithApostropheSeparator = "{{amount_with_apostrophe_separator}}",
+}
+
+// 导入方式
+import {currencyEnum} from '@channelwill/hooks';
+
+
+```
+`format` 参数在shopify提供的格式可以包含以下枚举值之一：
+
+- `currencyEnum.Amount`: 格式化为带千位分隔符的金额。
+- `currencyEnum.AmountNoDecimals`: 格式化为不带小数的金额。
+- `currencyEnum.AmountWithCommaSeparator`: 格式化为带逗号分隔符的金额。
+- `currencyEnum.AmountNoDecimalsWithCommaSeparator`: 格式化为不带小数且带逗号分隔符的金额。
+- `currencyEnum.AmountWithApostropheSeparator`: 格式化为带撇号分隔符的金额。
+
+
+```ts
+const amount = "1234567.89";
+
+const formattedAmount1 = formatCurrency(amount, currencyEnum.Amount); // "1,234,567.89"
+const formattedAmount2 = formatCurrency(amount, currencyEnum.AmountNoDecimals); // "1,234,568"
+const formattedAmount3 = formatCurrency(amount, currencyEnum.AmountWithCommaSeparator); // "1.234.567,89"
+const formattedAmount4 = formatCurrency(amount, currencyEnum.AmountNoDecimalsWithCommaSeparator); // "1.234.568"
+const formattedAmount5 = formatCurrency(amount, currencyEnum.AmountWithApostropheSeparator); // "1'234'567.89"
+```
+
+## 注意事项
+- 如果 `value` 是假值（如 `null`、`undefined`、`"0"`、`"0.00"` 或 `0`），并且提供了 `defaultValue`，则将返回 `defaultValue`。
+- 如果未提供 `format`，将直接返回原始 `value`。

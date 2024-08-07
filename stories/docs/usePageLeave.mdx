@@ -1,0 +1,35 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Hooks/usePageLeave" />
+
+# `usePageLeave`
+
+`usePageLeave` 用于检测用户离开当前页面的事件。当用户的鼠标指针离开浏览器窗口时，会触发指定的回调函数。
+
+## 参数
+- onPageLeave (function): 当用户离开页面时要调用的回调函数。此参数为必需。
+
+## 返回值
+无
+
+## 使用示例
+```tsx
+import React from 'react';
+import {usePageLeave} from '@channelwill/hooks';
+
+const MyComponent = () => {
+  const handlePageLeave = () => {
+    console.log('用户离开了页面');
+  };
+
+  usePageLeave(handlePageLeave);
+
+  return (
+    <div>
+      <h1>Welcome</h1>
+    </div>
+  );
+};
+
+export default MyComponent;
+```

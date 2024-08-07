@@ -1,0 +1,84 @@
+
+import Table from '../components/table';
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Hooks/useCommunication" />
+
+# `useCommunication`
+
+`useCommunication` 于在组件之间提供简单的消息传递功能。它通过上下文 API 实现，使得任意子组件能够发送和接收消息。
+
+## 使用方法
+
+### 1. 包裹应用
+在应用的根组件或者父级组件中使用 CommunicationProvider 进行包裹，以提供上下文：
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { CommunicationProvider } from '@channelwill/hooks';
+
+ReactDOM.render(
+  <CommunicationProvider>
+    <App />
+  </CommunicationProvider>,
+  document.getElementById('root')
+);
+
+```
+### 2. 使用 Hook
+在任意子组件中使用 useCommunication 来发送和接收消息：
+
+```tsx
+import React from 'react';
+import useCommunication from '@channelwill/hooks';
+
+const MessageSender: React.FC = () => {
+  const { sendMessage } = useCommunication();
+
+  const handleSend = () => {
+    sendMessage('Hello, World!');
+  };
+
+  return <button onClick={handleSend}>发送消息</button>;
+};
+
+const MessageReceiver: React.FC = () => {
+  const { message } = useCommunication();
+
+  return <div>接收到的消息: {message}</div>;
+};
+```
+
+## 参数
+`CommunicationProvider` 组件接受以下参数：
+
+```javascript
+{
+    children: React.ReactNode; // 包裹的子组件
+}
+```
+
+## 返回值
+
+<Table parameters={[
+    {
+        param: 'message',
+        description: '当前接收到的消息',
+        type: 'string',
+        defaultValue: '""',
+        exampleValue: '"Hello, World!"'
+    },
+    {
+        param: 'sendMessage',
+        description: '函数，用于发送消息',
+        type: '(message: string) => void',
+        defaultValue: '() => {}',
+        exampleValue: 'sendMessage("Hello!")'
+    }
+]} />
+
+## 注意事项
+确保 `useCommunication` 仅在 `CommunicationProvider` 包裹的组件中使用。如果在外部调用，将抛出错误。
+

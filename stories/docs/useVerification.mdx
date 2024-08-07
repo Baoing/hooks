@@ -1,0 +1,129 @@
+<Meta title="Hooks/useVerification" />
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+# `useVerification`
+
+`useVerification` 提供了一系列用于验证输入的函数，包括电子邮件、URL、电话号码格式和 E.164 格式的电话号码。此 Hook 旨在简化表单验证逻辑，使其更加模块化和可重用。
+
+## 函数说明
+- `isValidEmail(email: string): boolean`
+
+__参数:__
+
+- email - 要验证的电子邮件地址。
+
+__返回值:__
+
+返回一个布尔值，指示电子邮件地址是否有效。
+
+__示例:__
+```javascript
+isValidEmail('test@example.com'); // true
+```
+
+2.`isValidURL(url: string): boolean`
+
+__参数:__
+
+url - 要验证的 URL。
+
+__返回值:__
+
+返回一个布尔值，指示 URL 是否有效。
+
+__示例:__
+
+```javascript
+isValidURL('https://www.example.com'); // true
+```
+
+3.`checkPhoneNumberFormat(number: string): boolean`
+
+__参数:__
+
+number - 要验证的电话号码。
+
+__返回值:__
+
+返回一个布尔值，指示电话号码格式是否有效。
+
+__示例:__
+
+```javascript
+checkPhoneNumberFormat('12345'); // true
+```
+4.`isE164PhoneNumber(input: string): boolean`
+
+__参数:__
+
+input - 要验证的电话号码。
+
+__返回值:__
+
+返回一个布尔值，指示电话号码是否符合 E.164 格式。
+
+__示例:__
+
+```javascript
+isE164PhoneNumber('+1234567890'); // true
+```
+
+## Demo示例
+```tsx
+import React, {useState} from 'react';
+import {useVerification} from '@channelwill/hooks';
+import {Text, TextField, Button} from "@shopify/polaris"
+
+const Template = () => {
+  const {
+    isValidEmail,
+    isValidURL,
+    checkPhoneNumberFormat,
+    isE164PhoneNumber,
+  } = useVerification();
+
+  const [email, setEmail] = useState('');
+  const [url, setURL] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [validationResults, setValidationResults] = useState({
+    emailValid: false,
+    urlValid: false,
+    phoneFormatValid: false,
+    phoneE164Valid: false
+  });
+
+  const handleSubmit = () => {
+    const emailValid = isValidEmail(email);
+    const urlValid = isValidURL(url);
+    const phoneFormatValid = checkPhoneNumberFormat(phoneNumber);
+    const phoneE164Valid = isE164PhoneNumber(phoneNumber);
+
+    setValidationResults({
+      emailValid,
+      urlValid,
+      phoneFormatValid,
+      phoneE164Valid,
+    });
+  };
+
+  return (
+    <div>
+      <Text variant={"headingLg"} as={"h3"}>输入验证表单</Text>
+      <div className={"w-96 max-w-full flex flex-col gap-2 my-2"}>
+        <TextField label={"Email"} value={email}  onChange={setEmail} autoComplete={""}/>
+        <TextField label={"URL"} value={url}  onChange={setURL} autoComplete={""}/>
+        <TextField label={"Phone"} value={phoneNumber}  onChange={setPhoneNumber} autoComplete={""}/>
+        <Button variant={"primary"} onClick={handleSubmit}>提交</Button>
+      </div>
+
+      <Text variant={"headingMd"} as={"h3"}>验证结果: </Text>
+      <ul className={"flex flex-col gap-2 mt-2"}>
+        <li>电子邮件有效: {validationResults.emailValid ? '是' : '否'}</li>
+        <li>URL有效: {validationResults.urlValid ? '是' : '否'}</li>
+        <li>电话号码格式有效: {validationResults.phoneFormatValid ? '是' : '否'}</li>
+        <li>电话号码符合 E.164 格式: {validationResults.phoneE164Valid ? '是' : '否'}</li>
+      </ul>
+    </div>
+  );
+};
+```

@@ -1,0 +1,32 @@
+<Meta title="Hooks/useScript" />
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+# `useScript`
+
+`useScript` 用于动态加载外部脚本。它能够有效地管理脚本的加载状态，并处理脚本加载中的错误。
+
+## 使用方法
+
+```tsx
+import {useScript} from '@channelwill/hooks';
+
+const MyComponent = () => {
+  const { loaded, error } = useScript("https://example.com/script.js", "example-script");
+
+  return (
+    <div>
+      {error ? <p>脚本加载错误</p> : loaded ? <p>脚本加载完成</p> : <p>脚本加载中...</p>}
+    </div>
+  );
+};
+```
+
+## 参数
+
+`src` (string)：
+
+要加载的脚本的 URL。
+
+`id` (string)：
+
+脚本元素的 ID，用于避免重复加载同一脚本。

@@ -1,0 +1,39 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Hooks/useOnceClick" />
+
+# `useOnceClick`
+
+`useOnceClick` 用于在指定的目标元素上监听一次点击事件。该 Hook 会在第一次点击时触发指定的回调函数，并在可选的情况下，决定是否保留事件监听器。
+
+## 参数
+
+- options (可选)
+    - target (HTMLElement): 指定事件监听器的目标元素。如果未提供，默认使用 document。
+    - retain (boolean): 如果为 true，在第一次点击后保留事件监听器；如果为 false（默认），在第一次点击后移除事件监听器。
+
+## 返回值
+- 类型: `(onClick: (event: React.MouseEvent<HTMLElement>) => void) => void`
+
+__描述:__
+
+返回一个函数，该函数用于注册点击事件处理程序。该处理程序将在指定的目标元素被点击时调用。
+
+## 使用示例
+```tsx
+import React from 'react';
+import {useOnceClick} from '@channelwill/hooks';
+import {Button} from "@shopify/polaris";
+
+const MyComponent = () => {
+  const handleClick = useOnceClick()(()=>{
+    console.log("点击了")
+  });
+
+  return <div>
+    <Button onClick={handleClick}>点击</Button>
+  </div>;
+};
+
+export default MyComponent;
+```

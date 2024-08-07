@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "declaration": true,
+    "pretty": true,
+    "rootDir": "./packages",
+    "sourceMap": false,
+    "strict": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": false,
+    "noFallthroughCasesInSwitch": true,
+    "outDir": "lib",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "importHelpers": true,
+    "baseUrl": ".",
+    "paths": {
+      "@channelwill/hooks": ["packages"],
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "lib",
+    "esm",
+    "tests",
+    "stories",
+    "jest.config.ts",
+    "jest.config.*.ts",
+    "vite.config.ts"
+  ],
+}

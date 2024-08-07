@@ -1,0 +1,54 @@
+import Table from '../components/table';
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Hooks/useOnClickOutside" />
+
+# `useOnClickOutside`
+
+`useOnClickOutside` 用于检测用户点击页面外部的事件。当用户点击指定元素外部时，执行指定的处理函数。
+
+
+## 功能
+- 动态绑定事件监听器。
+- 自动更新处理函数，确保使用最新的函数。
+- 在组件卸载时自动移除事件监听器，避免内存泄漏。
+
+## 参数
+<Table parameters={[
+    {
+        param: 'ref',
+        description: '需要检测点击外部的元素的引用。通常是使用 React.useRef 创建的引用。(必填)',
+        type: "RefObject<T>",
+        defaultValue: '无',
+    },
+    {
+        param: 'handler',
+        description: '事件处理函数，接收事件对象作为参数。(必填)',
+        type: "EventHandler<E>",
+        defaultValue: '无',
+    }
+]} />
+
+## 返回值
+无
+
+## 示例
+```tsx
+import {useOnClickOutside} from '@channelwill/hooks';
+
+const MyComponent = () => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = () => {
+    console.log('Clicked outside!');
+  };
+
+  useOnClickOutside(ref, handleClickOutside);
+
+  return (
+    <div ref={ref} style={{ padding: '20px', background: 'lightgray' }}>
+      点击外部以触发事件
+    </div>
+  );
+};
+```
