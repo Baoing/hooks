@@ -37,21 +37,21 @@ $ pnpm add @channelwill/hooks
 
 ### Base Hooks
 
-- [useDebounce](https://hooks-1be.pages.dev/?path=/docs/tool-hooks-usedebounce--docs): 防抖函数。
-- [useMemorizedFn](https://hooks-1be.pages.dev/?path=/docs/tool-hooks-usememorizedfn--docs): 记忆化函数。
-- [useMount](https://hooks-1be.pages.dev/?path=/docs/tool-hooks-usemount--docs): 组件挂载时调用。
-- [useThrottle](https://hooks-1be.pages.dev/?path=/docs/tool-hooks-usethrottle--docs): 节流函数。
-- [useToggle](https://hooks-1be.pages.dev/?path=/docs/tool-hooks-usetoggle--docs): 状态切换。
+- [useDebounce](https://hooks-1be.pages.dev/?path=/docs/base-hooks-usedebounce--docs): 防抖函数。
+- [useMemorizedFn](https://hooks-1be.pages.dev/?path=/docs/base-hooks-usememorizedfn--docs): 记忆化函数。
+- [useMount](https://hooks-1be.pages.dev/?path=/docs/base-hooks-usemount--docs): 组件挂载时调用。
+- [useThrottle](https://hooks-1be.pages.dev/?path=/docs/base-hooks-usethrottle--docs): 节流函数。
+- [useToggle](https://hooks-1be.pages.dev/?path=/docs/base-hooks-usetoggle--docs): 状态切换。
 
 ### DOM Hooks
 
-- [useEventListener](https://hooks-1be.pages.dev/?path=/docs/tool-hooks-usecommunication--docs): 绑定监听 DOM 事件。
-- [useInViewport](https://hooks-1be.pages.dev/?path=/docs/tool-hooks-usecommunication--docs): 检测元素是否在视口内。
-- [useIsMobile](https://hooks-1be.pages.dev/?path=/docs/tool-hooks-usecommunication--docs): 检测是否为移动设备。
-- [useOnClickOutside](https://hooks-1be.pages.dev/?path=/docs/tool-hooks-usecommunication--docs): 点击外部时触发。
-- [useOnceClick](https://hooks-1be.pages.dev/?path=/docs/tool-hooks-usecommunication--docs): 只处理一次点击事件。
-- [usePageLeave](https://hooks-1be.pages.dev/?path=/docs/tool-hooks-usecommunication--docs): 页面离开时触发。
-- [useWindowSize](https://hooks-1be.pages.dev/?path=/docs/tool-hooks-usecommunication--docs): 获取窗口尺寸。
+- [useEventListener](https://hooks-1be.pages.dev/?path=/docs/dom-hooks-useeventlistener--docs): 绑定监听 DOM 事件。
+- [useInViewport](https://hooks-1be.pages.dev/?path=/docs/dom-hooks-useinviewport--docs): 检测元素是否在视口内。
+- [useIsMobile](https://hooks-1be.pages.dev/?path=/docs/dom-hooks-useismobile--docs): 检测是否为移动设备。
+- [useOnClickOutside](https://hooks-1be.pages.dev/?path=/docs/dom-hooks-useonclickoutside--docs): 点击外部时触发。
+- [useOnceClick](https://hooks-1be.pages.dev/?path=/docs/dom-hooks-useonceclick--docs): 只处理一次点击事件。
+- [usePageLeave](https://hooks-1be.pages.dev/?path=/docs/dom-hooks-usepageleave--docs): 页面离开时触发。
+- [useWindowSize](https://hooks-1be.pages.dev/?path=/docs/dom-hooks-usewindowsize--docs): 获取窗口尺寸。
 
 ## Demo
 
