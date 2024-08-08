@@ -9,7 +9,7 @@ export default {
 } as Meta;
 
 const Template: () => JSX.Element = () => {
-  const handleClick = useOnceClick()(action('useOnceClick'));
+  const handleClick = useOnceClick(action("handleClick"));
 
   return <div>
     <Button onClick={handleClick}>点击</Button>

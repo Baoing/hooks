@@ -1,25 +1,14 @@
-import {useCallback} from 'react';
+import {useCallback, useState} from 'react';
 
-const useOnceClick = (
-  options?: { target?: HTMLElement; retain?: boolean }
-) => {
-  return useCallback((onClick: (event?: any) => void) => {
-    const target = options?.target || document;
+const useOnceClick = (onClick: (event?: any) => void) => {
+  const [hasClicked, setHasClicked] = useState(false);
 
-    const clickHandler = (event?: any) => {
-      if (event instanceof MouseEvent) {
-        onClick(event);
-
-        if (!options?.retain) {
-          target.removeEventListener('click', clickHandler);
-        }
-      }
-    };
-
-    target.addEventListener('click', clickHandler);
-
-    return clickHandler;
-  }, [options]);
+  return useCallback((event: any) => {
+    if (!hasClicked) {
+      onClick(event);
+      setHasClicked(true);
+    }
+  }, [hasClicked, onClick]);
 };
 
 export default useOnceClick;
