@@ -1,6 +1,6 @@
 {
   "name": "@channelwill/hooks",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A React hooks library",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -89,7 +89,7 @@
     "type": "git",
     "url": "git+https://github.com/Baoing/hooks"
   },
-  "homepage": "https://hooks-1be.pages.dev/",
+  "homepage": "https://hooks.baoea.com/",
   "author": "baoing",
   "license": "ISC"
 }
