@@ -1,7 +1,7 @@
 {
   "name": "@channelwill/hooks",
-  "version": "0.1.4",
-  "description": "A React hooks library",
+  "version": "0.1.5",
+  "description": "Lightweight, multi-application based React hooks library",
   "main": "lib/index.js",
   "module": "esm/index.js",
   "types": "lib/index.d.ts",
@@ -89,7 +89,7 @@
     "type": "git",
     "url": "git+https://github.com/Baoing/hooks"
   },
-  "homepage": "https://hooks.baoea.com/",
-  "author": "baoing",
+  "homepage": "https://hooks.baoea.com",
+  "author": "Baoea",
   "license": "ISC"
 }

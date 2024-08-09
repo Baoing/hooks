@@ -1,0 +1,42 @@
+<Meta title="Base Hooks/useSearchListener" />
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+# `useSearchListener`
+
+`useSearchListener` 用于监听 URL 查询参数的变化，并在变化时执行指定的回调函数。它适用于的场景。
+
+## 适用场景
+- 需要根据 URL 查询参数进行响应，例如套餐订阅返回链接
+
+## 使用方法
+
+```tsx
+import {useSearchListener} from '@channelwill/hooks';
+
+const ExampleComponent = () => {
+  // 使用自定义 Hook 监听 location.search 的变化
+  useSearchListener((search: string) => {
+    console.log('Search params changed:', search);
+  });
+
+  // 函数用于更改 window.location.search
+  const changeSearchParams = () => {
+    const newSearch = location.search === '?param1=value1' ? '?param2=value2' : '?param1=value1';
+    window.history.pushState({}, '', newSearch); // 更新 window.location.search
+    window.dispatchEvent(new Event('popstate')); // 触发 popstate 事件
+  };
+
+  return (
+    <div>
+      <h1>Search Listener Demo （控制台Console查看打印）</h1>
+      <button className={"mt-2"} onClick={changeSearchParams}>点击改变 Search Params</button>
+    </div>
+  );
+};
+```
+
+## 参数
+`useSearchListener` 接受一个函数(`useSearchListener`)作为参数:
+
+- 类型: `(search: string) => void`
+- 描述: 当 URL 查询参数变化时调用的回调函数，接收当前的查询字符串作为参数。

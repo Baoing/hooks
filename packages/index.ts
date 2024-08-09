@@ -15,6 +15,7 @@ export { default as useCommunication } from './hooks/useCommunication';
 export { default as useArrayComparison } from './hooks/useArrayComparison';
 export { default as useCurrencyConverter } from './hooks/useCurrencyConverter';
 export { default as useCurrencyFormat } from './hooks/useCurrencyFormat';
+export { default as useSearchListener } from './hooks/useSearchListener';
 export { default as useDebounce } from './hooks/useDebounce';
 export { default as useThrottle } from './hooks/useThrottle';
 export { default as useEventListener } from './hooks/useEventListener';

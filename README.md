@@ -1,7 +1,7 @@
 <div align="center">
   <h1>
     <br/>
-    <a href="#" style="display: flex; justify-content: center;gap: 8px;">
+    <a href="https://www.npmjs.com/package/@channelwill/hooks" style="display: flex; justify-content: center;gap: 8px;">
        <img src="https://www.channelwill.com/wp-content/uploads/2024/04/comparison_logo_3.svg" alt="" />
     </a>
     <br />
@@ -23,23 +23,24 @@ $ pnpm add @channelwill/hooks
 
 ### Tool Hooks
 
-- [useArrayComparison](https://hooks.baoea.com/?path=/docs/tool-hooks-usearraycomparison--docs): 比较两个数组的变化。
-- [useCommunication](https://hooks.baoea.com/?path=/docs/tool-hooks-usecommunication--docs): 处理组件之间的通信。
-- [useCurrencyConverter](https://hooks.baoea.com/?path=/docs/tool-hooks-usecurrencyconverter--docs): 货币转换工具。
-- [useCurrencyFormat](https://hooks.baoea.com/?path=/docs/tool-hooks-usecurrencyformat--docs): 格式化货币显示。
-- [useEncryption](https://hooks.baoea.com/?path=/docs/tool-hooks-useencryption--docs): 数据加密。
-- [useError](https://hooks.baoea.com/?path=/docs/tool-hooks-useerror--docs): 错误处理工具。
+- [useArrayComparison](https://hooks.baoea.com/?path=/docs/tool-hooks-usearraycomparison--docs): 比较两个数组的差异变化。
+- [useCommunication](https://hooks.baoea.com/?path=/docs/tool-hooks-usecommunication--docs): 简洁处理组件之间的通信。
+- [useCurrencyConverter](https://hooks.baoea.com/?path=/docs/tool-hooks-usecurrencyconverter--docs): 货币转换工具，实时汇率，涵盖Shopify180多种货币的自由转换。
+- [useCurrencyFormat](https://hooks.baoea.com/?path=/docs/tool-hooks-usecurrencyformat--docs): 格式化国际货币显示。
+- [useEncryption](https://hooks.baoea.com/?path=/docs/tool-hooks-useencryption--docs): 数据的加/解密操作。
+- [useError](https://hooks.baoea.com/?path=/docs/tool-hooks-useerror--docs): 错误处理工具，配合错误捕获。
 - [useExportCSV](https://hooks.baoea.com/?path=/docs/tool-hooks-useexportcsv--docs): 导出 CSV 文件。
-- [useForm](https://hooks.baoea.com/?path=/docs/tool-hooks-useform--docs): 表单管理。
+- [useForm](https://hooks.baoea.com/?path=/docs/tool-hooks-useform--docs): 表单管理，验证规则管理。
 - [usePagination](https://hooks.baoea.com/?path=/docs/tool-hooks-usepagination--docs): 分页功能。
-- [useScript](https://hooks.baoea.com/?path=/docs/tool-hooks-usescript--docs): 动态加载脚本。
+- [useScript](https://hooks.baoea.com/?path=/docs/tool-hooks-usescript--docs): 通过链接动态加载脚本。
 - [useVerification](https://hooks.baoea.com/?path=/docs/tool-hooks-useverification--docs): 提供验证规则工具。
 
 ### Base Hooks
 
 - [useDebounce](https://hooks.baoea.com/?path=/docs/base-hooks-usedebounce--docs): 防抖函数。
-- [useMemorizedFn](https://hooks.baoea.com/?path=/docs/base-hooks-usememorizedfn--docs): 记忆化函数。
+- [useMemorizedFn](https://hooks.baoea.com/?path=/docs/base-hooks-usememorizedfn--docs): 记忆化函数，拓展性能优化手段。
 - [useMount](https://hooks.baoea.com/?path=/docs/base-hooks-usemount--docs): 组件挂载时调用。
+- [useSearchListener](https://hooks.baoea.com/?path=/docs/base-hooks-usesearchlistener--docs):  URL 查询参数的变化时调用。
 - [useThrottle](https://hooks.baoea.com/?path=/docs/base-hooks-usethrottle--docs): 节流函数。
 - [useToggle](https://hooks.baoea.com/?path=/docs/base-hooks-usetoggle--docs): 状态切换。
 
