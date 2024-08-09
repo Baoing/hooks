@@ -1,7 +1,7 @@
 <div align="center">
   <h1>
     <br/>
-    <a href="https://www.npmjs.com/package/@channelwill/hooks" style="display: flex; justify-content: center;gap: 8px;">
+    <a href="#" style="display: flex; justify-content: center;gap: 8px;">
        <img src="https://www.channelwill.com/wp-content/uploads/2024/04/comparison_logo_3.svg" alt="" />
     </a>
     <br />
