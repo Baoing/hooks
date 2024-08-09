@@ -1,19 +1,15 @@
 import { useEffect, useState } from "react"
 
-
 interface useScriptReturn {
   loaded: boolean,
   error: boolean,
-  success: boolean,
   toPromise: () => Promise<any>
 }
 
 const useScript = (src: string, id: string): useScriptReturn => {
   const [loaded, setLoaded] = useState(false)
   const [error, setError] = useState(false)
-  const [success, setSuccess] = useState(false)
 
-  
   const promise = new Promise((resolve, reject) => {
     useEffect(() => {
       // Check if the script is already present in the document
@@ -22,7 +18,6 @@ const useScript = (src: string, id: string): useScriptReturn => {
       if (existingScript) {
         setLoaded(true)
         setError(false)
-        setSuccess(true)
         resolve('');
         return
       }
@@ -37,14 +32,12 @@ const useScript = (src: string, id: string): useScriptReturn => {
       const onScriptLoad = () => {
         setLoaded(true)
         setError(false)
-        setSuccess(true)
         resolve('');
       }
   
-      const onScriptError = (err) => {
+      const onScriptError = (err: any) => {
         setLoaded(false)
         setError(true)
-        setSuccess(false)
         reject(err);
       }
   
@@ -59,10 +52,9 @@ const useScript = (src: string, id: string): useScriptReturn => {
         document.body.removeChild(script)
       }
     }, [id]);
+  })
 
-   })
-
-  return { loaded, error, success, toPromise: () => promise };
+  return { loaded, error, toPromise: () => promise };
 }
 
 export default useScript;

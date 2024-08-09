@@ -11,7 +11,16 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs';
 import {useScript} from '@channelwill/hooks';
 
 const MyComponent = () => {
-  const { loaded, error } = useScript("https://example.com/script.js", "example-script");
+  // Load error example: Invalid link
+  // const { loaded, error, toPromise } = useScript("https://example.com/script.js", "example-script");
+
+  const { loaded, error, toPromise } = useScript("https://code.jquery.com/jquery-3.7.1.js", "sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=");
+
+  toPromise().then(()=>{
+    console.log("loaded: Do something")
+  }).catch(()=>{
+    console.log("load error: Do something")
+  })
 
   return (
     <div>
@@ -30,3 +39,10 @@ const MyComponent = () => {
 `id` (string)：
 
 脚本元素的 ID，用于避免重复加载同一脚本。
+
+## 返回值
+`useScript` 返回一个对象，包含以下属性：
+
+- `loaded`: `boolean` - 脚本是否成功加载。
+- `error`: `boolean` - 脚本加载过程中是否发生错误。
+- `toPromise`: `() => Promise<any>` - 返回一个 `Promise`，表示脚本加载的状态。

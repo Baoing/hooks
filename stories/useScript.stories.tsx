@@ -7,7 +7,13 @@ export default {
 } as Meta;
 
 const Template = () => {
-  const { loaded, error } = useScript("https://example.com/script.js", "example-script");
+  const {loaded, error, toPromise} = useScript("https://code.jquery.com/jquery-3.7.1.js", "sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=");
+
+  toPromise().then(()=>{
+    console.log("loaded: Do something")
+  }).catch(()=>{
+    console.log("load error: Do something")
+  })
 
   return <div>
     <p>示例加载【https://example.com/script.js】</p>
