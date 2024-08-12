@@ -1,6 +1,6 @@
 {
   "name": "@channelwill/hooks",
-  "version": "0.1.9",
+  "version": "0.1.12",
   "readme": "README.md",
   "description": "Lightweight, multi-application based React hooks library",
   "main": "lib/index.js",
@@ -83,8 +83,11 @@
   "keywords": [
     "react",
     "hook",
+    "hooks",
     "form",
-    "validation"
+    "forms",
+    "validation",
+    "currency"
   ],
   "repository": {
     "type": "git",

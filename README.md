@@ -2,14 +2,13 @@
   <h1>
     <br/>
     <a href="https://www.npmjs.com/package/@channelwill/hooks" style="display: flex; align-items: center; justify-content: center;gap: 8px;">
-       <img width="60" src="/assets/images/logo.svg" alt="" />
-       Channelwill Hooks
+       <img width="60" src="https://hooks.baoea.com/images/logo.svg" alt="" />
+       <div>Channelwill Hooks</div>
     </a>
   </h1>
   <h3 align="center">Ready to use out of the box, no hassle.</h3>
 
 <sup>
-    <br />
     <br />
     <a href="https://www.npmjs.com/package/@channelwill/hooks">
        <img src="https://img.shields.io/npm/v/%40channelwill%2Fhooks" alt="npm package" />
@@ -42,7 +41,8 @@ See https://hooks.baoea.com/
 
 - [useArrayComparison](https://hooks.baoea.com/?path=/docs/tool-hooks-usearraycomparison--docs): 比较两个数组的差异变化。
 - [useCommunication](https://hooks.baoea.com/?path=/docs/tool-hooks-usecommunication--docs): 简洁处理组件之间的通信。
-- [useCurrencyConverter](https://hooks.baoea.com/?path=/docs/tool-hooks-usecurrencyconverter--docs): 货币转换工具，实时汇率，涵盖Shopify180多种货币的自由转换。
+- [useCurrencyConverter](https://hooks.baoea.com/?path=/docs/tool-hooks-usecurrencyconverter--docs):
+  货币转换工具，实时汇率，涵盖Shopify180多种货币的自由转换。
 - [useCurrencyFormat](https://hooks.baoea.com/?path=/docs/tool-hooks-usecurrencyformat--docs): 格式化国际货币显示。
 - [useEncryption](https://hooks.baoea.com/?path=/docs/tool-hooks-useencryption--docs): 数据的加/解密操作。
 - [useError](https://hooks.baoea.com/?path=/docs/tool-hooks-useerror--docs): 错误处理工具，配合错误捕获。
@@ -80,10 +80,10 @@ See https://hooks.baoea.com/
 其中示例
 
 ```tsx
-import { useWindowSize, useEventListener } from '@channelwill/hooks';
+import {useWindowSize, useEventListener} from '@channelwill/hooks';
 
 const ExampleComponent = () => {
-  const { width, height } = useWindowSize();
+  const {width, height} = useWindowSize();
 
   const handleClick = () => {
     console.log('Window clicked!');
