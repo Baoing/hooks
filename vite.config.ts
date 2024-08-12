@@ -9,4 +9,5 @@ export default defineConfig({
       '@channelwill/hooks': path.resolve(__dirname, 'packages'),
     },
   },
+  publicDir: 'assets',
 });
