@@ -1,12 +1,27 @@
 <div align="center">
   <h1>
     <br/>
-    <a href="#" style="display: flex; justify-content: center;gap: 8px;">
-       <img src="https://www.channelwill.com/wp-content/uploads/2024/04/comparison_logo_3.svg" alt="" />
+    <a href="https://www.npmjs.com/package/@channelwill/hooks" style="display: flex; align-items: center; justify-content: center;gap: 8px;">
+       <img width="60" src="/assets/images/logo.svg" alt="" />
+       Channelwill Hooks
+    </a>
+  </h1>
+  <h3 align="center">Ready to use out of the box, no hassle.</h3>
+
+<sup>
+    <br />
+    <br />
+    <a href="https://www.npmjs.com/package/@channelwill/hooks">
+       <img src="https://img.shields.io/npm/v/%40channelwill%2Fhooks" alt="npm package" />
+    </a>
+    <a href="https://www.npmjs.com/package/@channelwill/hooks">
+      <img src="https://img.shields.io/npm/dm/%40channelwill%2Fhooks" alt="npm downloads" />
+    </a>
+    <a href="https://hooks.baoea.com/">
+      <img src="https://img.shields.io/badge/demos-🚀-yellow.svg" alt="demos" />
     </a>
     <br />
-    Channelwill Hooks👍
-  </h1>
+  </sup>
 </div>
 
 ## Installation
@@ -20,6 +35,8 @@ $ pnpm add @channelwill/hooks
 ```
 
 ## API Documentation
+
+See https://hooks.baoea.com/
 
 ### Tool Hooks
 
@@ -96,7 +113,6 @@ $ npm run start
 ```
 
 Open browser access [http://localhost:6006/](http://localhost:6006/)
-
 
 ## License
 
