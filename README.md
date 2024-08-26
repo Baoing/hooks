@@ -51,6 +51,7 @@ See https://hooks.baoea.com/
 - [usePagination](https://hooks.baoea.com/?path=/docs/tool-hooks-usepagination--docs): 分页功能。
 - [useScript](https://hooks.baoea.com/?path=/docs/tool-hooks-usescript--docs): 通过链接动态加载脚本。
 - [useVerification](https://hooks.baoea.com/?path=/docs/tool-hooks-useverification--docs): 提供验证规则工具。
+- [useCountdown](https://hooks.baoea.com/?path=/docs/tool-hooks-usecountdown--docs): 提供倒计时工具，同时支持时分秒和验证码倒计时场景。
 
 ### Base Hooks
 
