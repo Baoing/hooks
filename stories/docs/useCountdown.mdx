@@ -1,0 +1,46 @@
+<Meta title="Tool Hooks/useCountdown" />
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+# `useCountdown`
+
+`useCountdown` 用于实现倒计时功能, 支持时分秒的活动计时，简化在 React 组件中轻松管理验证码计时/活动倒计时逻辑。
+
+## 说明
+- __初始值__：在使用 `useCountdown` 时，传入初始的倒计时总秒数（例如，3661 秒代表 1 小时 1 分钟 1 秒）。
+- __返回值__：这个 Hook 返回一个对象，包含 `hours`、`minutes` 和 `seconds`，分别表示当前的小时、分钟和秒。
+- __清理定时器__：当组件卸载或倒计时结束时，会清理定时器，避免内存泄漏。
+
+## 使用示例
+
+```tsx
+import {useCountdown} from '@channelwill/hooks';
+
+const MyComponent = () => {
+ const { compareArrays } = useArrayComparison();
+ const { hours, minutes, seconds } = useCountdown(3661); // 从 1 小时 1 分钟 1 秒开始倒计时
+
+  return (
+    <div>
+      <h1>倒计时: {`${hours}小时 ${minutes}分钟 ${seconds}秒`}</h1>
+      {(hours === 0 && minutes === 0 && seconds === 0) && <p>时间到！</p>}
+    </div>
+  );
+};
+```
+
+
+## 参数
+- `initialCount (number)`: 倒计时的初始值，以秒为单位。例如，3661 代表 1 小时 1 分钟 1 秒。
+
+## 返回值
+`useCountdown` 返回一个对象，包含以下属性：
+
+- `hours (number)`: 当前的小时数。
+- `minutes (number)`: 当前的分钟数。
+- `seconds (number)`: 当前的秒数。
+
+该 Hook 会在倒计时结束时自动停止计时。并且组件卸载时，Hook 会清理定时器，避免内存泄漏。
+
+## 未来进阶
+如果有需要，可进一步扩展这个 Hook，例如添加暂停、重置等功能。
+
