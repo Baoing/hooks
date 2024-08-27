@@ -1,0 +1,26 @@
+<Meta title="Tool Hooks/useNetworkStatus" />
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+# `useNetworkStatus`
+
+`useNetworkStatus` 用于监测用户的网络状态。它返回一个布尔值 isOnline，表示用户当前是否在线。
+
+## 使用方法
+
+```tsx
+import {useNetworkStatus} from '@channelwill/hooks';
+
+const MyComponent = () => {
+  const isOnline = useNetworkStatus();
+
+  return (
+    <div>
+      <h1>网络状态</h1>
+      <p>{isOnline ? '在线' : '离线'}</p>
+    </div>
+  );
+};
+```
+
+## 返回值
+- `isOnline`：布尔值，表示用户当前的网络状态。
