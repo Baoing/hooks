@@ -1,0 +1,60 @@
+<Meta title="DOM Hooks/useAnimationFrame" />
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+# `useAnimationFrame`
+
+`useAnimationFrame`  用于在每个动画帧中执行回调函数。它可以用于实现平滑的动画效果或基于时间的更新, 实现基于动画帧的更新。
+
+
+## 参数
+- `callback`: `(deltaTime: number) => void` - 每帧调用的回调函数，接收当前帧与上一帧之间的时间差（以毫秒为单位）。
+- `isActive`: `boolean` (可选) - 控制动画是否处于活动状态，默认为 `true`。
+## 使用方法
+
+```tsx
+import React, { useState } from 'react';
+import useAnimationFrame from '@channelwill/hooks';
+
+const AnimationExample = () => {
+  const [position, setPosition] = useState(0);
+
+  useAnimationFrame((deltaTime) => {
+    setPosition((prevPosition) => prevPosition + deltaTime * 0.1); // 根据时间差更新位置
+  });
+
+  return (
+    <div style={{ height: '100vh', overflow: 'hidden', position: 'relative' }}>
+      <div
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: position,
+          width: '50px',
+          height: '50px',
+          backgroundColor: 'blue',
+          borderRadius: '50%',
+          transform: 'translateY(-50%)',
+        }}
+      />
+      <p style={{ position: 'absolute', bottom: '20px', left: '20px' }}>
+        当前位置: {position.toFixed(2)}
+      </p>
+    </div>
+  );
+};
+```
+
+
+## 说明
+
+1. **参数**：
+- `callback`: 每帧调用的函数，接收时间差，允许你根据帧率更新状态。
+- `isActive`: 控制动画的开关，适用于需要暂停动画的场景。
+
+2. **示例**：
+- 在示例中，使用 `useAnimationFrame` 来更新一个蓝色圆圈的位置，根据时间差进行平滑移动。
+
+3. **样式**：
+- 使用简单的 CSS 样式来展示动画效果，确保圆圈在视口内移动。
+
+这个文档和示例展示了 `useAnimationFrame` 的用法，帮助用户理解如何在 React 中实现基于动画帧的更新。

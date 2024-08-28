@@ -24,7 +24,6 @@ export { default as useOnClickOutside } from './hooks/useOnClickOutside';
 export { default as useMemorizedFn } from './hooks/useMemorizedFn';
 export { default as useCountdown } from './hooks/useCountdown';
 export { default as useNetworkStatus } from './hooks/useNetworkStatus';
-export { default as useNetworkStatusWithRetry } from './hooks/useNetworkStatusWithRetry';
 export { default as useKeyPress } from './hooks/useKeyPress';
 export { default as useScrollPosition } from './hooks/useScrollPosition';
 export { default as useAnimationFrame } from './hooks/useAnimationFrame';
