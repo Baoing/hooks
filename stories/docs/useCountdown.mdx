@@ -16,7 +16,6 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs';
 import {useCountdown} from '@channelwill/hooks';
 
 const MyComponent = () => {
- const { compareArrays } = useArrayComparison();
  const { hours, minutes, seconds } = useCountdown(3661); // 从 1 小时 1 分钟 1 秒开始倒计时
 
   return (

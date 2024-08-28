@@ -1,26 +1,25 @@
 import {Meta} from "@storybook/react";
 import React from 'react';
 import {useCurrencyFormat, currencyEnum} from '@channelwill/hooks';
-import {Page, LegacyCard, DataTable} from '@shopify/polaris';
+import {Page, LegacyCard, DataTable, Link} from '@shopify/polaris';
 
 export default {
   title: 'Tool Hooks/useCurrencyFormat',
 } as Meta;
 
-
 const Template = () => {
   const { formatCurrency } = useCurrencyFormat();
+  const count = 1134.65
 
-  const rows = [
-    ['124689.334', currencyEnum.Amount, formatCurrency("124689.334", currencyEnum.Amount)],
-    ['324511.334', currencyEnum.Amount, formatCurrency("324511.334", currencyEnum.Amount)],
-    ['1683424689.1', currencyEnum.AmountNoDecimals, formatCurrency("1683424689.1", currencyEnum.AmountNoDecimals)],
-    ['1124384.22', currencyEnum.AmountWithApostropheSeparator, formatCurrency("1124384.22", currencyEnum.AmountWithApostropheSeparator)],
-    ['1124384.22', currencyEnum.AmountWithCommaSeparator, formatCurrency("1124384.22",currencyEnum.AmountWithCommaSeparator)],
-  ];
+  const currencyEnumArray: currencyEnum[] = Object.values(currencyEnum);
+
+  const rows = currencyEnumArray.map(format=> [count, format, formatCurrency(count, format)])
 
   return (
     <Page title="货币格式化示例">
+      <div className={"mb-2"}>
+        <Link url={"https://help.shopify.com/en/manual/international/pricing/currency-formatting"} external={true}>Shopify Currency Formatting</Link>
+      </div>
       <LegacyCard>
         <DataTable
           showTotalsInFooter

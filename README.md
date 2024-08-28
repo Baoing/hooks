@@ -52,6 +52,8 @@ See https://hooks.baoea.com/
 - [useScript](https://hooks.baoea.com/?path=/docs/tool-hooks-usescript--docs): 通过链接动态加载脚本。
 - [useVerification](https://hooks.baoea.com/?path=/docs/tool-hooks-useverification--docs): 提供验证规则工具。
 - [useCountdown](https://hooks.baoea.com/?path=/docs/tool-hooks-usecountdown--docs): 提供倒计时工具，同时支持时分秒和验证码倒计时场景。
+- [useNetworkStatus](https://hooks.baoea.com/?path=/docs/tool-hooks-usenetworkstatus--docs): 用于监测用户的网络状态。
+- [useKeyPress](https://hooks.baoea.com/?path=/docs/tool-hooks-usekeypress--docs): 用于检测特定按键的按下状态。
 
 ### Base Hooks
 
@@ -71,6 +73,8 @@ See https://hooks.baoea.com/
 - [useOnceClick](https://hooks.baoea.com/?path=/docs/dom-hooks-useonceclick--docs): 只处理一次点击事件。
 - [usePageLeave](https://hooks.baoea.com/?path=/docs/dom-hooks-usepageleave--docs): 页面离开时触发。
 - [useWindowSize](https://hooks.baoea.com/?path=/docs/dom-hooks-usewindowsize--docs): 获取窗口尺寸。
+- [useScrollPosition](https://hooks.baoea.com/?path=/docs/dom-hooks-usescrollposition--docs): 用于获取当前的滚动位置。
+- [useAnimationFrame](https://hooks.baoea.com/?path=/docs/dom-hooks-useanimationframe--docs): 用于在每个动画帧中执行回调函数, 常用于性能优化。
 
 ## Demo
 
