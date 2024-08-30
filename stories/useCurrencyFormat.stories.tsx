@@ -11,7 +11,9 @@ const Template = () => {
   const { formatCurrency } = useCurrencyFormat();
   const count = 1134.65
 
-  const currencyEnumArray: currencyEnum[] = Object.values(currencyEnum);
+  const currencyEnumArray: currencyEnum|string[] = Object.values(currencyEnum);
+  currencyEnumArray.push("€{{amount_with_comma_separator}} EUR")
+  currencyEnumArray.push("${{amount_with_comma_separator}} USD")
 
   const rows = currencyEnumArray.map(format=> [count, format, formatCurrency(count, format)])
 
