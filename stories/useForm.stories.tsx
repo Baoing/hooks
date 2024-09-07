@@ -28,12 +28,6 @@ const Template = () => {
     }
   );
 
-  const handleChange = (key: string, value: string) => {
-    handleInputChange(key, value);
-    // 如果需要输入时清除error
-    clearErrors(key)
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
@@ -51,7 +45,7 @@ const Template = () => {
           <TextField
             label="Name"
             value={formValues.name}
-            onChange={(value) => handleChange("name", value)}
+            onChange={(value) => handleInputChange({name: value})}
             autoComplete={""}
             error={formErrors.name || ""}
           />
@@ -59,7 +53,7 @@ const Template = () => {
           <TextField
             label="Email"
             value={formValues.email}
-            onChange={(value) => handleChange("email", value)}
+            onChange={(value) => handleInputChange({email: value})}
             autoComplete={""}
             error={formErrors.email || ""}
           />
@@ -68,12 +62,16 @@ const Template = () => {
             label="Password"
             type={"password"}
             value={formValues.password}
-            onChange={(value) => handleChange("password", value)}
+            onChange={(value) => handleInputChange({password: value})}
             autoComplete={""}
             error={formErrors.password || ""}
           />
 
           <div className={"flex mt-2 gap-2"}>
+            <Button
+              size={"large"}
+              onClick={() => handleInputChange({name: 'Bob', email: 'Bob@gmail.com', password: '123456789'})}
+            >Set init data</Button>
             <Button size={"large"} onClick={resetForm}>Reset</Button>
             <Button size={"large"} submit variant={"primary"}>Submit</Button>
           </div>

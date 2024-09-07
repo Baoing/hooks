@@ -17,13 +17,15 @@ function useForm(
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState<Record<string, string | null>>({});
 
-  const handleChange = (key: string, value: any) => {
-    setValues({ ...values, [key]: value });
+  const handleChange = (newValues: Record<string, any>) => {
+    setValues({ ...values, ...newValues });
 
     if(validationSchema){
       // Perform validation on the changed field
-      const error = validationSchema[key] ? validationSchema[key](value) : "";
-      setErrors({ ...errors, [key]: error });
+      for (let key in newValues){
+        // 如果更改了值，则将报错信息取消
+        newValues[key] && setErrors({ ...errors, [key]: "" });
+      }
     }
   };
 

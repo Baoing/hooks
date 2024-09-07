@@ -35,7 +35,7 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs';
 
 2.`errors`: 表单字段的错误信息。这是一个对象,其键对应于表单字段,值为错误消息或 null(无错误)。
 
-3.`handleChange`: 一个函数,用于更新表单字段值并进行验证。它接受两个参数:字段名称和新值。
+3.`handleChange`: 一个函数,用于更新表单字段值并进行验证。它接受更改的数据集: `key`: 字段名称, `value`新值, 例如： `{name: "xxxx"}`。
 
 4.`resetForm`: 一个函数,用于将表单重置为初始状态。
 
@@ -68,12 +68,6 @@ export default function (){
     }
   );
 
-  const handleChange = (key: string, value: string) => {
-    handleInputChange(key, value);
-    // 如果需要输入时清除error
-    clearErrors(key)
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
@@ -91,7 +85,7 @@ export default function (){
           <TextField
             label="Name"
             value={formValues.name}
-            onChange={(value) => handleChange("name", value)}
+            onChange={(value) => handleInputChange({name: value})}
             autoComplete={""}
             error={formErrors.name || ""}
           />
@@ -99,7 +93,7 @@ export default function (){
           <TextField
             label="Email"
             value={formValues.email}
-            onChange={(value) => handleChange("email", value)}
+            onChange={(value) => handleInputChange({email: value})}
             autoComplete={""}
             error={formErrors.email || ""}
           />
@@ -108,12 +102,16 @@ export default function (){
             label="Password"
             type={"password"}
             value={formValues.password}
-            onChange={(value) => handleChange("password", value)}
+            onChange={(value) => handleInputChange({password: value})}
             autoComplete={""}
             error={formErrors.password || ""}
           />
 
           <div className={"flex mt-2 gap-2"}>
+            <Button
+              size={"large"}
+              onClick={() => handleInputChange({name: 'Bob', email: 'Bob@gmail.com', password: '123456789'})}
+            >Set init data</Button>
             <Button size={"large"} onClick={resetForm}>Reset</Button>
             <Button size={"large"} submit variant={"primary"}>Submit</Button>
           </div>
