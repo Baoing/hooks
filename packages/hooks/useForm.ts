@@ -1,18 +1,10 @@
 import { useState } from "react";
 
-type Validator = (value: string) => string;
+export type Validator = (value: string) => string;
 
-interface InitialState {
-  [key: string]: string;
-}
-
-interface ValidationSchema {
-  [key: string]: Validator;
-}
-
-function useForm(
-  initialState: InitialState,
-  validationSchema?: ValidationSchema
+function useForm<T extends Record<string, any>>(
+  initialState: T,
+  validationSchema?: Partial<Record<keyof T, Validator>>
 ) {
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState<Record<string, string | null>>({});
@@ -39,8 +31,9 @@ function useForm(
     let isValid = true;
 
     for (const key in validationSchema) {
-      const error = validationSchema[key](values[key]);
-      newErrors[key] = error;
+      // 使用类型断言来确保 key 是 keyof T
+      const error = validationSchema[key as keyof T]?.(values[key as keyof T]);
+      newErrors[key] = error || ""; // 如果没有错误，设置为空字符串
       if (error) {
         isValid = false;
       }

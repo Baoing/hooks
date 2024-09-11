@@ -15,14 +15,17 @@ const length = (value: string) => value.length >= 8 ? "" : "The field value is a
 
 const Template = () => {
 
-  const [formValues, formErrors, handleInputChange, resetForm, validateForm, clearErrors] = useForm(
+  const [formValues, formErrors, handleInputChange, resetForm, validateForm, clearErrors] = useForm<{
+    name: string,
+    email: string,
+    password: string
+  }>(
     {
       name: '',
       email: '',
       password: ''
     },
     {
-      name: required,
       email: (value) => required(value) || emailFormat(value),
       password: (value) => required(value) || length(value)
     }
