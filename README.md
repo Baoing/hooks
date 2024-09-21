@@ -21,6 +21,8 @@
     </a>
     <br />
   </sup>
+
+English | [简体中文](https://github.com/Baoing/hooks/blob/main/README.zh-CN.md)
 </div>
 
 ## Installation
@@ -39,50 +41,50 @@ See https://hooks.baoea.com/
 
 ### Tool Hooks
 
-- [useArrayComparison](https://hooks.baoea.com/?path=/docs/tool-hooks-usearraycomparison--docs): 比较两个数组的差异变化。
-- [useCommunication](https://hooks.baoea.com/?path=/docs/tool-hooks-usecommunication--docs): 简洁处理组件之间的通信。
+- [useArrayComparison](https://hooks.baoea.com/?path=/docs/tool-hooks-usearraycomparison--docs): Compares two arrays for differences.
+- [useCommunication](https://hooks.baoea.com/?path=/docs/tool-hooks-usecommunication--docs): Succinctly handles communication between components.
 - [useCurrencyConverter](https://hooks.baoea.com/?path=/docs/tool-hooks-usecurrencyconverter--docs):
-  货币转换工具，实时汇率，涵盖Shopify180多种货币的自由转换。
-- [useCurrencyFormat](https://hooks.baoea.com/?path=/docs/tool-hooks-usecurrencyformat--docs): 格式化国际货币显示。
-- [useEncryption](https://hooks.baoea.com/?path=/docs/tool-hooks-useencryption--docs): 数据的加/解密操作。
-- [useError](https://hooks.baoea.com/?path=/docs/tool-hooks-useerror--docs): 错误处理工具，配合错误捕获。
-- [useExportCSV](https://hooks.baoea.com/?path=/docs/tool-hooks-useexportcsv--docs): 导出 CSV 文件。
-- [useForm](https://hooks.baoea.com/?path=/docs/tool-hooks-useform--docs): 表单管理，验证规则管理。
-- [usePagination](https://hooks.baoea.com/?path=/docs/tool-hooks-usepagination--docs): 分页功能。
-- [useScript](https://hooks.baoea.com/?path=/docs/tool-hooks-usescript--docs): 通过链接动态加载脚本。
-- [useVerification](https://hooks.baoea.com/?path=/docs/tool-hooks-useverification--docs): 提供验证规则工具。
-- [useCountdown](https://hooks.baoea.com/?path=/docs/tool-hooks-usecountdown--docs): 提供倒计时工具，同时支持时分秒和验证码倒计时场景。
-- [useNetworkStatus](https://hooks.baoea.com/?path=/docs/tool-hooks-usenetworkstatus--docs): 用于监测用户的网络状态。
-- [useKeyPress](https://hooks.baoea.com/?path=/docs/tool-hooks-usekeypress--docs): 用于检测特定按键的按下状态。
+  Currency conversion tool, real-time exchange rate, covering free conversion of more than 180 currencies of Shopify.
+- [useCurrencyFormat](https://hooks.baoea.com/?path=/docs/tool-hooks-usecurrencyformat--docs): Formats international currency display.
+- [useEncryption](https://hooks.baoea.com/?path=/docs/tool-hooks-useencryption--docs): Data encryption/decryption operations.
+- [useError](https://hooks.baoea.com/?path=/docs/tool-hooks-useerror--docs): Error handling tools, combined with error capture.
+- [useExportCSV](https://hooks.baoea.com/?path=/docs/tool-hooks-useexportcsv--docs): Export a CSV file.
+- [useForm](https://hooks.baoea.com/?path=/docs/tool-hooks-useform--docs): Form management, validation rule management.
+- [usePagination](https://hooks.baoea.com/?path=/docs/tool-hooks-usepagination--docs): Paging functionality.
+- [useScript](https://hooks.baoea.com/?path=/docs/tool-hooks-usescript--docs): Dynamically load scripts via links.
+- [useVerification](https://hooks.baoea.com/?path=/docs/tool-hooks-useverification--docs): Provides validation rule tools.
+- [useCountdown](https://hooks.baoea.com/?path=/docs/tool-hooks-usecountdown--docs): Provides a countdown tool that supports both hour, minute, second and verification code countdown scenarios.
+- [useNetworkStatus](https://hooks.baoea.com/?path=/docs/tool-hooks-usenetworkstatus--docs): Used to monitor the user's network status.
+- [useKeyPress](https://hooks.baoea.com/?path=/docs/tool-hooks-usekeypress--docs): Used to detect the pressed state of a specific key.
 
 ### Base Hooks
 
-- [useDebounce](https://hooks.baoea.com/?path=/docs/base-hooks-usedebounce--docs): 防抖函数。
-- [useMemorizedFn](https://hooks.baoea.com/?path=/docs/base-hooks-usememorizedfn--docs): 记忆化函数，拓展性能优化手段。
-- [useMount](https://hooks.baoea.com/?path=/docs/base-hooks-usemount--docs): 组件挂载时调用。
-- [useSearchListener](https://hooks.baoea.com/?path=/docs/base-hooks-usesearchlistener--docs):  URL 查询参数的变化时调用。
-- [useThrottle](https://hooks.baoea.com/?path=/docs/base-hooks-usethrottle--docs): 节流函数。
-- [useToggle](https://hooks.baoea.com/?path=/docs/base-hooks-usetoggle--docs): 状态切换。
+- [useDebounce](https://hooks.baoea.com/?path=/docs/base-hooks-usedebounce--docs): debounce function.
+- [useMemorizedFn](https://hooks.baoea.com/?path=/docs/base-hooks-usememorizedfn--docs): Memoize functions and expand performance optimization methods.
+- [useMount](https://hooks.baoea.com/?path=/docs/base-hooks-usemount--docs): Called when the component is mounted.
+- [useSearchListener](https://hooks.baoea.com/?path=/docs/base-hooks-usesearchlistener--docs):  Called when a URL query parameter changes.
+- [useThrottle](https://hooks.baoea.com/?path=/docs/base-hooks-usethrottle--docs): Throttling function.
+- [useToggle](https://hooks.baoea.com/?path=/docs/base-hooks-usetoggle--docs): Toggle state.
 
 ### DOM Hooks
 
-- [useEventListener](https://hooks.baoea.com/?path=/docs/dom-hooks-useeventlistener--docs): 绑定监听 DOM 事件。
-- [useInViewport](https://hooks.baoea.com/?path=/docs/dom-hooks-useinviewport--docs): 检测元素是否在视口内。
-- [useIsMobile](https://hooks.baoea.com/?path=/docs/dom-hooks-useismobile--docs): 检测是否为移动设备。
-- [useOnClickOutside](https://hooks.baoea.com/?path=/docs/dom-hooks-useonclickoutside--docs): 点击外部时触发。
-- [useOnceClick](https://hooks.baoea.com/?path=/docs/dom-hooks-useonceclick--docs): 只处理一次点击事件。
-- [usePageLeave](https://hooks.baoea.com/?path=/docs/dom-hooks-usepageleave--docs): 页面离开时触发。
-- [useWindowSize](https://hooks.baoea.com/?path=/docs/dom-hooks-usewindowsize--docs): 获取窗口尺寸。
-- [useScrollPosition](https://hooks.baoea.com/?path=/docs/dom-hooks-usescrollposition--docs): 用于获取当前的滚动位置。
-- [useAnimationFrame](https://hooks.baoea.com/?path=/docs/dom-hooks-useanimationframe--docs): 用于在每个动画帧中执行回调函数, 常用于性能优化。
+- [useEventListener](https://hooks.baoea.com/?path=/docs/dom-hooks-useeventlistener--docs): Bind and listen to DOM events.
+- [useInViewport](https://hooks.baoea.com/?path=/docs/dom-hooks-useinviewport--docs): Checks if an element is within the viewport.
+- [useIsMobile](https://hooks.baoea.com/?path=/docs/dom-hooks-useismobile--docs): Detect if it is a mobile device.
+- [useOnClickOutside](https://hooks.baoea.com/?path=/docs/dom-hooks-useonclickoutside--docs): Fired when clicking outside.
+- [useOnceClick](https://hooks.baoea.com/?path=/docs/dom-hooks-useonceclick--docs): Only handles a click event once.
+- [usePageLeave](https://hooks.baoea.com/?path=/docs/dom-hooks-usepageleave--docs): Fired when leaving the page.
+- [useWindowSize](https://hooks.baoea.com/?path=/docs/dom-hooks-usewindowsize--docs): Get the window size.
+- [useScrollPosition](https://hooks.baoea.com/?path=/docs/dom-hooks-usescrollposition--docs): Used to get the current scroll position.
+- [useAnimationFrame](https://hooks.baoea.com/?path=/docs/dom-hooks-useanimationframe--docs): Used to execute callback functions in each animation frame, often used for performance optimization.
 
 ## Demo
 
-在这里提供一些示例代码和演示，以帮助用户更好地理解如何使用这些 hooks。
+Here are some sample codes and demonstrations to help users better understand how to use these hooks.
 
-[链接地址](https://hooks.baoea.com/)
+[Link address](https://hooks.baoea.com/)
 
-其中示例
+Examples
 
 ```tsx
 import {useWindowSize, useEventListener} from '@channelwill/hooks';
@@ -98,7 +100,7 @@ const ExampleComponent = () => {
 
   return (
     <div>
-      <h1>当前窗口大小: {width} x {height}</h1>
+      <h1>Current window size: {width} x {height}</h1>
     </div>
   );
 };

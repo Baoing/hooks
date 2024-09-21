@@ -7,9 +7,9 @@ function useForm<T extends Record<string, any>>(
   validationSchema?: Partial<Record<keyof T, Validator>>
 ) {
   const [values, setValues] = useState(initialState);
-  const [errors, setErrors] = useState<Record<string, string | null>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof T, string | null>>>({});
 
-  const handleChange = (newValues: Record<string, any>) => {
+  const handleChange = (newValues: Partial<Record<keyof T, any>>) => {
     setValues({ ...values, ...newValues });
 
     if(validationSchema){
@@ -27,11 +27,10 @@ function useForm<T extends Record<string, any>>(
   };
 
   const validateForm = () => {
-    const newErrors: Record<string, string> = {};
+    const newErrors: Partial<Record<keyof T, any>> = {};
     let isValid = true;
 
     for (const key in validationSchema) {
-      // 使用类型断言来确保 key 是 keyof T
       const error = validationSchema[key as keyof T]?.(values[key as keyof T]);
       newErrors[key] = error || ""; // 如果没有错误，设置为空字符串
       if (error) {
@@ -43,7 +42,7 @@ function useForm<T extends Record<string, any>>(
     return isValid;
   };
 
-  const clearErrors = (key?: string) => {
+  const clearErrors = (key?: keyof T) => {
     if(key){
       setErrors({ ...errors, [key]: "" });
     }else{
