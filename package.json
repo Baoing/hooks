@@ -1,6 +1,6 @@
 {
   "name": "@channelwill/hooks",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "readme": "README.md",
   "description": "Lightweight, multi-application based React hooks library",
   "main": "lib/index.js",
