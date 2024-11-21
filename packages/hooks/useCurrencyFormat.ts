@@ -30,7 +30,7 @@ const useCurrencyFormat = () => {
         break;
 
       case currencyEnum.AmountWithCommaSeparator:
-        formattedAmount = amount.toLocaleString(undefined, options);
+        formattedAmount = amount.toLocaleString('de-DE', options);
         break;
 
       case currencyEnum.AmountNoDecimalsWithCommaSeparator:
